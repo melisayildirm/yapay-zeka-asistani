@@ -1,0 +1,12 @@
+# API Anahtarı dosyası (gizli tutulmalı)
+.env
+
+__pycache__/ # Python'ın oluşturduğu derlenmiş kod dosyaları
+*.pyc        # Python'ın oluşturduğu derlenmiş kod dosyaları
+*.pyo        # Optimize edilmiş derlenmiş kod dosyaları
+*.pyd        # Windows'ta dinamik bağlantı kütüphaneleri
+.Python      # Bazı Python ortamlarının oluşturduğu klasörler
+
+env/         # 'env' adında bir sanal ortam klasörünüz varsa
+.venv/       # '.venv' adında bir sanal ortam klasörünüz varsa (yaygın)
+venv/        # 'venv' adında bir sanal ortam klasörünüz varsa
