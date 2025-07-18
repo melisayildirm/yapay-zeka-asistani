@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Gereksinim Analiz Asistanı</title>
+    <style>
+        /* Temel CSS stilleri */
+        body { font-family: Arial, sans-serif; margin: 20px; background-color: #f4f4f4; color: #333; }
+        .container { max-width: 900px; margin: auto; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        h1, h2, h3 { color: #0056b3; }
+        form { margin-top: 20px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        textarea, input[type="file"] { width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box; }
+        button { background-color: #007bff; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; }
+        button:hover { background-color: #0056b3; }
+        /* Yeni: Çıktı bölgesi için daha iyi stil */
+        .result { background-color: #e9ecef; padding: 15px; border-radius: 5px; margin-top: 20px; }
+        /* Markdown çıktısındaki listeler için ek stil */
+        .result ul, .result ol { margin-left: 20px; padding-left: 0; }
+        .result ul li, .result ol li { margin-bottom: 5px; }
+        /* Hata ve uyarı mesajları */
+        .error { color: red; font-weight: bold; margin-top: 10px; }
+        .warning { color: orange; margin-top: 10px; }
+        .original-text-preview { background-color: #f0f0f0; padding: 10px; border-left: 4px solid #ccc; margin-top: 15px; }
+        /* Django form hataları için özel stil */
+        ul.errorlist { color: red; list-style-type: none; padding: 0; margin-bottom: 10px; }
+        ul.errorlist li { margin-bottom: 5px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>💡 AI Destekli Gereksinim Analiz Asistanı</h1>
+        <p>Projenizin senaryo metnini girin veya bir PDF dosyası yükleyerek analiz ettirin.</p>
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %} {# Django formları için güvenlik tokeni, her POST formunda olmalı #}
+
+            {# Genel form hatalarını göster (örn: hem metin hem PDF girildiyse) #}
+            {% if form.non_field_errors %}
+                <ul class="errorlist">
+                    {% for error in form.non_field_errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            <div style="margin-bottom: 15px;">
+                <label for="{{ form.senaryo_metni.id_for_label }}">Senaryo Metni:</label><br>
+                {{ form.senaryo_metni }}
+                {% if form.senaryo_metni.errors %}
+                    <ul class="errorlist">
+                        {% for error in form.senaryo_metni.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            
+            <p style="text-align: center; margin: 10px 0; font-weight: bold;">VEYA</p>
+
+            <div style="margin-bottom: 15px;">
+                <label for="{{ form.pdf_dosyasi.id_for_label }}">PDF Dosyası Yükle:</label><br>
+                {{ form.pdf_dosyasi }}
+                {% if form.pdf_dosyasi.errors %}
+                    <ul class="errorlist">
+                        {% for error in form.pdf_dosyasi.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                        </ul>
+                {% endif %}
+            </div>
+
+            <button type="submit">Senaryoyu Analiz Et</button>
+        </form>
+
+        {# AI'ya gönderilen metnin önizlemesi #}
+        {% if original_senaryo_metni_preview %}
+            <div class="original-text-preview">
+                <h3>Giriş Metni Önizlemesi (İlk 500 Karakter):</h3>
+                <p>{{ original_senaryo_metni_preview }}</p>
+            </div>
+        {% endif %}
+
+        {# Hata mesajları #}
+        {% if hata_mesaji %}
+            <div class="error">Hata: {{ hata_mesaji }}</div>
+        {% endif %}
+
+        {# Analiz sonucu #}
+        {% if analiz_sonucu %}
+            <div class="result">
+                <h2>🤖 Gemini'den Gelen Senaryo Analizi</h2>
+                {# views.py'de Markdown'ı HTML'e dönüştürdüğümüz için 'safe' filtresiyle doğrudan HTML olarak render edebiliriz #}
+                {{ analiz_sonucu|safe }} {# <-- Bu satır güncellendi #}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
