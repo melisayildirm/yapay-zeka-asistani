@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -99,6 +100,31 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+JAZZMIN_SETTINGS = {
+    "site_title": "Senaryo Analiz Admin",
+    "site_header": "Senaryo Analiz",
+    "site_brand": "Senaryo AI",
+    "site_logo": "admin/img/logo.png", # Varsayılan logo yolu, isterseniz kendi logonuzu koyabilirsiniz
+    "login_logo": None,
+    "login_logo_dark": None,
+    "site_logo_classes": "img-circle",
+    "welcome_sign": "Senaryo Analiz Paneline Hoş Geldiniz",
+    "copyright": "Melis Yıldırım - 2025",
+    "search_model": ["auth.User", "auth.Group"], # Admin panelinde arama yapılabilecek modeller
+    "topbar_links": [
+        {"name": "Dış Bağlantı", "url": "https://ai.google.dev/gemini-api", "new_window": True},
+    ],
+    "show_sidebar": True,
+    "navigation_expanded": True,
+    "hide_apps": [],
+    "hide_models": [],
+    "order_with_respect_to": ["analiz_uygulamasi", "auth"], # Uygulamaların sıralaması
+    "custom_css": None,
+    "custom_js": None,
+    "show_ui_builder": False, 
+    "changeform_format": "horizontal_tabs",
+    "changeform_format_overrides": {"auth.user": "vertical_tabs", "auth.group": "vertical_tabs"},
+} 
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
