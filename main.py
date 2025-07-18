@@ -73,7 +73,7 @@ else:
     print("Geçersiz seçim. Lütfen 1 veya 2 girin. Program sonlandırılıyor.")
     exit()
 
-# Analiz edilecek senaryo metninin ilk 500 karakterini ekrana yazdır (uzun metinler için faydalı)
+# Analiz edilecek senaryo metninin ilk 500 karakterini ekrana yazdır 
 print(f"\nAnaliz edilecek senaryo metni (ilk 500 karakter):\n{senaryo_metni[:500]}...")
 
 # Gemini'ye gönderilecek prompt (talimat) oluşturuluyor
@@ -90,6 +90,13 @@ print("\n--Gemini'den Gelen Senaryo Analizi---")
 try:
     gemini_response = model.generate_content(prompt)
     print(gemini_response.text)
+    output_filename = "senaryo_analizi.txt"
+    try:
+        with open(output_filename, 'w', encoding='utf-8') as f:
+            f.write(gemini_response.text)
+        print(f"\nAnaliz çıktısı '{output_filename}' dosyasına kaydedildi.")
+    except Exception as file_error:
+        print(f"HATA: Analiz çıktısı dosyaya kaydedilemedi: {file_error}")
 except Exception as e:
     print(f"Gemini'den yanıt alınırken bir hata oluştu :{e}")
 print("\n---------------------------------")

@@ -1,0 +1,62 @@
+**Fırat Üniversitesi Lisansüstü Programlarına Uluslararası Öğrenci Kabul Yönergesi için Gereksinimler:**
+
+**Fonksiyonel Gereksinimler (FR):**
+
+* FR1: Sistem, uluslararası öğrencilerin lisansüstü programlarına başvurularını online olarak kabul etmelidir. (BOS sistemi üzerinden)
+* FR2: Sistem, başvurular için gerekli tüm belgeleri tanımlamalı ve başvuru sahiplerinden talep etmelidir.
+* FR3: Sistem, başvuruları incelemeli ve başvuru sahiplerine onay veya ret bildirimi göndermelidir.
+* FR4: Sistem, başvuru sahiplerini, belirlenen kriterlere göre sıralamalıdır.
+* FR5: Sistem, kabul edilen ve reddedilen adayların listesini oluşturmalıdır.
+* FR6: Sistem, koşullu kabul durumlarını yönetmelidir (Türkçe hazırlık programı, bilimsel hazırlık programı, program koşullu kabulü).
+* FR7: Sistem, öğrencilerin kayıt işlemlerini yönetmelidir.
+* FR8: Sistem, öğrenim ücretlerini ve ödeme işlemlerini takip etmelidir.
+* FR9: Sistem, öğrencilerin burs durumlarını yönetmelidir.
+* FR10: Sistem, öğrencilerin sağlık sigortası bilgilerini kaydetmelidir.
+* FR11: Sistem, danışman atama sürecini yönetmelidir.
+* FR12: Sistem, öğrencilerin ders kayıtlarını yönetmelidir.
+* FR13: Sistem, mezuniyet şartlarını takip etmelidir.
+* FR14: Sistem, uluslararası öğrencilerin lisansüstü öğrenim süreçlerini Yükseköğretim Kurulu ve Üniversite Yönetmeliklerine göre yönetmelidir.
+* FR15: Sistem, Senato kararlarını ve ilgili kanun ve yönetmelikleri dikkate almalıdır.
+* FR16: Sistem, başvuru sonuçlarını online olarak ilan etmelidir.
+* FR17: Sistem, kabul edilen öğrencilere resmi kabul mektubu göndermelidir.
+
+
+**Fonksiyonel Olmayan Gereksinimler (NFR):**
+
+* NFR1: Sistem güvenli ve veri gizliliğini korumalıdır.
+* NFR2: Sistem kullanımı kolay ve kullanıcı dostu olmalıdır.
+* NFR3: Sistem erişilebilir ve farklı cihazlardan (bilgisayar, tablet, mobil) kullanılabilir olmalıdır.
+* NFR4: Sistem performanslı ve hızlı çalışmalıdır. (Yanıt süreleri kısa olmalı)
+* NFR5: Sistem ölçeklenebilir ve gelecekteki ihtiyaçları karşılayabilir olmalıdır.
+* NFR6: Sistem güvenilir ve kesintisiz çalışmalıdır.
+* NFR7: Sistem bakımı kolay olmalıdır.
+* NFR8: Sistem, ilgili yönetmelikler ve yasalara uygun olarak tasarlanmalı ve işletilmelidir.
+* NFR9: Sistem,  verilerin yedeklemesini ve geri yüklenmesini sağlamalıdır.
+
+
+**Kullanıcı Rolleri:**
+
+* Uluslararası Öğrenci (Başvuru sahibi)
+* Başvuru İnceleme Komisyonu Üyesi
+* Aday Değerlendirme Komisyonu Üyesi
+* Enstitü Yönetim Kurulu Üyesi (EYK)
+* Senato Üyesi
+* Sistem Yöneticisi
+
+
+**Teknik Gereksinimler:**
+
+* Çevrimiçi Başvuru Otomasyon Sistemi (BOS) -  Mevcut veya yeni geliştirilecek bir sistem.
+* Veritabanı (Öğrenci bilgileri, belgeler, başvuru durumu vb. saklamak için)
+* Web sunucusu ve uygulama sunucusu
+* Güvenlik duvarı ve diğer güvenlik önlemleri
+* Kullanıcı yönetim sistemi
+* Raporlama ve analiz araçları
+* İnternet bağlantısı
+* Yabancı dil ve ALES/GRE/GMAT puanlarını doğrulama mekanizması ile entegrasyon.
+* Ödeme entegrasyonu (öğrenim ücreti, vb.)
+* Belge yönetim sistemi (Dijital belge imzalama ve doğrulama)
+* Potansiyel teknolojiler:  Java, .NET, Python, PHP, MySQL, PostgreSQL, vb. (Belirli bir teknoloji seçimi projenin ölçeği ve bütçesine bağlıdır.)
+
+
+Bu liste, kapsamlı olmayıp, projenin ihtiyaçlarına göre güncellenebilir ve genişletilebilir.
