@@ -8,7 +8,6 @@ class SenaryoForm(forms.Form):
             'rows': 10,
             'cols': 80,
             'placeholder': 'Analiz etmek istediğiniz senaryo metnini buraya girin...',
-            'class': 'form-control' # CSS sınıfı ekleyebiliriz
         }),
         required=False, # Ya metin ya da PDF olmalı
         label="Senaryo Metni"
@@ -16,7 +15,9 @@ class SenaryoForm(forms.Form):
     pdf_dosyasi = forms.FileField(
         required=False, # Ya metin ya da PDF olmalı
         label="PDF Dosyası Yükle",
-        widget=forms.FileInput(attrs={'class': 'form-control-file'}) # CSS sınıfı ekleyebiliriz
+        widget=forms.FileInput(attrs={
+            'hidden': True # Orijinal input'u gizlemek için eklendi
+        })
     )
 
     def clean(self):

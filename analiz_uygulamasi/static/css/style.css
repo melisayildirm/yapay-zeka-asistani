@@ -1,0 +1,382 @@
+/* analiz_uygulamasi/static/css/style.css */
+
+/* Genel Stil Resetleri ve Temel Ayarlar */
+body {
+    font-family: 'Poppins', sans-serif; /* Yeni font Poppins */
+    margin: 0;
+    padding: 0;
+    background-color: #f7f9fc; /* Çok açık gri/mavi arka plan */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* İçeriği üste hizala, dikeyde ortalamadan */
+    min-height: 100vh; /* Minimum tam ekran yüksekliği */
+    color: #444; /* Koyu gri metin */
+    line-height: 1.7; /* Satır aralığını biraz artırdık */
+}
+
+/* Ana Konteyner */
+.container {
+    background-color: #ffffff;
+    border-radius: 18px; /* Daha da yuvarlak köşeler */
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1); /* Daha belirgin ama yumuşak gölge */
+    padding: 50px; /* Padding'i artırdık */
+    width: 100%;
+    max-width: 850px; /* Genişliği biraz daha artırdık */
+    text-align: center;
+    margin: 50px auto; /* Üstten ve alttan daha fazla boşluk */
+    box-sizing: border-box;
+    border: 1px solid #e0e6ed; /* Hafif bir dış kenarlık */
+}
+
+/* Başlıklar */
+header h1 {
+    color: #5ab1bb; /* Pastel Turkuaz tonu */
+    margin-bottom: 25px;
+    font-size: 2.8em; /* Başlığı biraz daha büyüttük */
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px; /* İkon ile yazı arasına boşluk */
+    letter-spacing: -0.5px; /* Harfler arası boşluk */
+}
+
+header h1 .icon {
+    font-size: 1.3em;
+    color: #ffd700; /* Işık ikonu için altın sarısı */
+}
+
+main p {
+    font-size: 1.15em; /* Açıklama metni fontu büyütüldü */
+    margin-bottom: 40px; /* Alt boşluk artırıldı */
+    color: #666; /* Orta gri metin */
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.8;
+}
+
+/* Bölümler Arası Boşluk */
+.input-section, .file-upload-section, .form-group {
+    margin-bottom: 30px; /* Bölümler arası boşluk artırıldı */
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px; /* Etiket ve input arası boşluk artırıldı */
+    font-weight: 600;
+    color: #555;
+    font-size: 1.1em;
+}
+
+/* Form Kontrolleri (Textarea) */
+textarea, input[type="text"] {
+    width: 100%;
+    padding: 18px; /* Padding artırıldı */
+    border: 1px solid #e0e6ed; /* Açık gri kenarlık */
+    border-radius: 10px; /* Köşeler yuvarlandı */
+    font-size: 1.05em; /* Font boyutu biraz büyütüldü */
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: #fcfdff; /* Hafif beyaz arka plan */
+}
+
+textarea {
+    min-height: 200px; /* Metin alanı daha da büyütüldü */
+    resize: vertical;
+}
+
+textarea:focus, input[type="text"]:focus {
+    border-color: #5ab1bb; /* Pastel Turkuaz focus rengi */
+    outline: none;
+    box-shadow: 0 0 10px rgba(90, 177, 187, 0.2); /* Hafif gölge efekti */
+}
+
+/* "VEYA" Ayırıcı */
+.or-separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 40px 0; /* Boşluk artırıldı */
+    color: #aaa;
+    font-size: 0.95em;
+    font-weight: 500;
+    text-transform: uppercase; /* Metni büyüttük */
+    letter-spacing: 1px; /* Harfler arası boşluk */
+}
+
+.or-separator::before,
+.or-separator::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px dashed #e0e6ed; /* Pastel kesikli çizgi */
+    margin: 0 15px; /* Kenar boşlukları artırıldı */
+}
+
+/* Özel Dosya Yükleme Alanı */
+.custom-file-upload {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Boşluk artırıldı */
+    background-color: #fcfdff; /* Hafif beyaz arka plan */
+    border: 1px solid #e0e6ed;
+    padding: 15px 20px; /* Padding artırıldı */
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.custom-file-upload:hover {
+    background-color: #f0f4f7; /* Hafif gölgelenme */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.upload-button {
+    background-color: #a3c4f3; /* Pastel Mavi */
+    color: white;
+    padding: 12px 25px; /* Padding artırıldı */
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-weight: 500;
+    flex-shrink: 0;
+    box-shadow: 0 4px 10px rgba(163, 196, 243, 0.3);
+}
+
+.upload-button:hover {
+    background-color: #8db5e9; /* Daha koyu pastel mavi */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(163, 196, 243, 0.4);
+}
+
+.selected-file-name {
+    color: #777;
+    font-style: italic;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex-grow: 1;
+    text-align: left;
+    font-size: 0.95em;
+}
+
+/* Analiz Butonu */
+.analyze-button {
+    background-color: #ff9a8d; /* Pastel Şeftali / Mercan */
+    color: white;
+    padding: 18px 35px; /* Padding artırıldı */
+    border: none;
+    border-radius: 10px; /* Köşeler yuvarlandı */
+    font-size: 1.25em; /* Font büyütüldü */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    margin-top: 40px; /* Boşluk artırıldı */
+    font-weight: 600;
+    width: auto;
+    min-width: 280px; /* Minimum genişlik artırıldı */
+    box-shadow: 0 6px 15px rgba(255, 154, 141, 0.3); /* Belirgin gölge */
+    letter-spacing: 0.5px;
+}
+
+.analyze-button:hover {
+    background-color: #ff7f70; /* Daha koyu pastel şeftali */
+    transform: translateY(-4px); /* Daha belirgin yukarı kalkma */
+    box-shadow: 0 10px 20px rgba(255, 154, 141, 0.4); /* Daha büyük gölge */
+}
+
+.analyze-button:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 10px rgba(255, 154, 141, 0.2);
+}
+
+/* Analiz Sonucu Alanı */
+.result {
+    background-color: #e8f5e9; /* Çok açık pastel yeşil arka plan */
+    border: 1px solid #c8e6c9; /* Pastel yeşil kenarlık */
+    padding: 30px; /* Padding artırıldı */
+    border-radius: 12px;
+    margin-top: 50px; /* Boşluk artırıldı */
+    text-align: left;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.result h2 {
+    color: #4caf50; /* Yeşil tonu (rahatlatıcı) */
+    margin-bottom: 25px; /* Boşluk artırıldı */
+    font-size: 2em;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.result h2 .icon {
+    font-size: 1.1em;
+}
+
+.result ul, .result ol {
+    margin-left: 25px; /* İçerik girintisi artırıldı */
+    padding-left: 0;
+    list-style-position: inside;
+}
+.result li {
+    margin-bottom: 10px; /* Liste elemanları arası boşluk */
+    line-height: 1.8;
+}
+.result li:last-child {
+    margin-bottom: 0;
+}
+
+/* Hata ve uyarı mesajları */
+.error, .errorlist {
+    color: #dc3545; /* Kırmızı hata rengi */
+    background-color: #ffe6e6; /* Açık kırmızı pastel arka plan */
+    border: 1px solid #ffcccc;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+    text-align: left;
+    font-weight: 500;
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+.warning {
+    color: #ff9800; /* Turuncu uyarı rengi */
+    background-color: #fff9e6;
+    border: 1px solid #ffe8b3;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+    text-align: left;
+}
+
+.original-text-preview {
+    background-color: #f5f8fa; /* Hafif gri mavi arka plan */
+    padding: 25px;
+    border-left: 6px solid #a3c4f3; /* Pastel mavi kenarlık */
+    margin-top: 40px;
+    border-radius: 10px;
+    text-align: left;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.original-text-preview h3 {
+    color: #7986cb; /* Daha yumuşak morumsu mavi */
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.4em;
+    font-weight: 600;
+}
+
+.original-text-preview p {
+    font-size: 1em;
+    color: #777;
+    word-wrap: break-word;
+    white-space: pre-wrap; /* Metin formatını korumak için */
+}
+
+
+/* Django form hataları için özel stil */
+ul.errorlist {
+    color: #dc3545;
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 15px;
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    font-weight: normal;
+    font-size: 0.9em;
+    margin-top: 8px;
+    padding-left: 0; /* Baştan kaldırıldığından emin olun */
+}
+ul.errorlist li {
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+/* Medya Sorguları (Responsive Tasarım) */
+@media (max-width: 768px) {
+    body {
+        align-items: flex-start; /* Küçük ekranlarda yine üste hizala */
+    }
+    .container {
+        padding: 30px 20px;
+        margin: 20px auto;
+        border-radius: 12px;
+    }
+    header h1 {
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+    main p {
+        font-size: 1em;
+        margin-bottom: 25px;
+    }
+    label {
+        font-size: 1em;
+        margin-bottom: 6px;
+    }
+    textarea, input[type="text"] {
+        padding: 12px;
+        font-size: 0.95em;
+    }
+    textarea {
+        min-height: 150px;
+    }
+    .or-separator {
+        margin: 25px 0;
+        font-size: 0.85em;
+    }
+    .custom-file-upload {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 12px 15px;
+        gap: 10px;
+    }
+    .upload-button {
+        width: 100%;
+        text-align: center;
+        padding: 10px 15px;
+        font-size: 0.95em;
+    }
+    .selected-file-name {
+        width: 100%;
+        text-align: center;
+        font-size: 0.9em;
+    }
+    .analyze-button {
+        width: 100%;
+        min-width: unset;
+        padding: 14px 25px;
+        font-size: 1.1em;
+        margin-top: 25px;
+    }
+    .result {
+        padding: 20px;
+        margin-top: 30px;
+        border-radius: 10px;
+    }
+    .result h2 {
+        font-size: 1.6em;
+        margin-bottom: 15px;
+    }
+    .result ul, .result ol {
+        margin-left: 15px;
+    }
+    .result li {
+        margin-bottom: 6px;
+    }
+    .original-text-preview {
+        padding: 15px;
+        margin-top: 25px;
+        border-radius: 8px;
+    }
+    .original-text-preview h3 {
+        font-size: 1.2em;
+        margin-bottom: 10px;
+    }
+}
