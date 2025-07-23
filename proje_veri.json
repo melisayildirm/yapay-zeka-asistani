@@ -1,1385 +1,848 @@
 [
   {
-    "senaryo_adi": "Online Kitap Satış Platformu",
-    "senaryo_metni": "Bir online kitap satış platformu yapmak istiyorum.Kullanıcılar kitapları kategoriye göre filtreleyip sepetlerine ekleyebilecek.Ayrıca geçmiş alışverişleirine göre sistem onlara kitap önerileri sunacak.Admin kitap ekleyip stok takibi yapabilecek.",
-    "gereksinimler": [
-      {
-        "metin": "Kullanıcılar kitapları kategoriye göre filtrelemeli",
-        "tip": "FR"
-      },
-      {
-        "metin": "Kullanıcılar ürünleri sepetlerine ekleyebilmeli",
-        "tip": "FR"
-      },
-      {
-        "metin": "Sistem kullanıcıların geçmiş alışverişlerine göre kitap önerileri sunabilmeli",
-        "tip": "FR"
-      },
-      {
-        "metin": "Yönetici (Admin) sisteme yeni kitaplar ekleyebilmeli.",
-        "tip": "FR"
-      },
-      {
-        "metin": "Sistem hızlı yanıt vermeli ve performanslı olmalı.",
-        "tip": "NFR"
-      },
-      {
-        "metin": "Sistemdeki verilerin güvenliği sağlanmalı.",
-        "tip": "NFR"
-      }
-    ],
-    "oneriler": [
-      {
-        "tip": "NFR - Güvenlik",
-        "detay": "Kullanıcı bilgileri (kayıt, şifreler) ve ödeme işlemleri güvenli bir şekilde şifrelenmeli ve saklanmalı, ilgili yasal düzenlemelere (örn: KVKK) uyulmalı."
-      },
-      {
-        "tip": "NFR - Kullanılabilirlik",
-        "detay": "Kullanıcı arayüzü, hem son kullanıcılar hem de yöneticiler için sezgisel, kolay anlaşılır ve kullanıcı dostu olmalı."
-      },
-      {
-        "tip": "NFR - Ölçeklenebilirlik",
-        "detay": "Sistem, gelecekteki kullanıcı artışına ve ürün çeşitliliğine uyum sağlayabilecek şekilde ölçeklenebilir olmalı."
-      },
-      {
-        "tip": "FR - Ödeme İşlemleri",
-        "detay": "Kullanıcılar, çeşitli ödeme yöntemlerini (kredi kartı, banka havalesi, mobil ödeme vb.) kullanarak siparişlerini tamamlayabilmeli."
-      },
-      {
-        "tip": "FR - Kullanıcı Hesabı Yönetimi",
-        "detay": "Kullanıcılar sisteme kayıt olabilmeli, giriş yapabilmeli ve profil bilgilerini güncelleyebilmeli."
-      },
-      {
-        "tip": "FR - Sipariş Takibi ve İptali",
-        "detay": "Kullanıcılar geçmiş siparişlerini görüntüleyebilmeli, sipariş durumunu takip edebilmeli ve belirli bir süre içinde iptal/iade talebinde bulunabilmeli."
-      },
-      {
-        "tip": "FR - Ürün Detayları",
-        "detay": "Kullanıcılar, kitapların detay sayfalarını (yazar, yayınevi, özet, fiyat, yorumlar, puanlama) görüntüleyebilmeli."
-      },
-      {
-        "tip": "FR - Gelişmiş Arama",
-        "detay": "Kullanıcılar, kitapları anahtar kelime, yazar, yayınevi veya ISBN numarasına göre arayabilmeli."
-      },
-      {
-        "tip": "FR - Admin Sipariş Yönetimi",
-        "detay": "Yönetici (Admin), müşteri siparişlerini görüntüleyebilmeli, sipariş durumlarını güncelleyebilmeli ve sevk/teslimat süreçlerini yönetebilmeli."
-      },
-      {
-        "tip": "FR - İletişim/Destek",
-        "detay": "Kullanıcılar, siparişleriyle ilgili sorunlar için müşteri hizmetleri ile iletişime geçebilmeli (örn: iletişim formu, canlı destek)."
-      }
-    ],
+    "proje_adi": "Online Kitap Satış Platformu",
+    "giris": {
+      "amac": "Bu belge, Online Kitap Satış Platformu sistemine ait gereksinimleri tanımlar. Sistem, Bir online kitap satış platformu yapmak istiyorum.Kullanıcılar kitapları kategoriye göre filtreleyip sepetlerine ekleyebilecek.Ayrıca geçmiş alışverişleirine göre sistem onlara kitap önerileri sunacak.Admin kitap ekleyip stok takibi yapabilecek.",
+      "kapsam": "Proje kapsamında hedeflenen temel işlevler, sistemin destekleyeceği kullanıcı rollerine ve süreçlerine göre şekillendirilmiştir."
+    },
     "kullanici_rolleri": [
       {
         "rol": "Müşteri/Kullanıcı",
-        "detay": "Kitapları filtreleyen, sepetine ekleyen, sipariş veren, öneri alan kişi."
+        "gorevler": [
+          "Kitapları filtreleyen, sepetine ekleyen, sipariş veren, öneri alan kişi."
+        ]
       },
       {
         "rol": "Yönetici (Admin)",
-        "detay": "Kitap ekleyen, stok takibi yapan, siparişleri yöneten kişi."
+        "gorevler": [
+          "Kitap ekleyen, stok takibi yapan, siparişleri yöneten kişi."
+        ]
       }
     ],
-    "teknik_gereksinimler": [
+    "fonksiyonel_gereksinimler": {
+      "FR-01": "Kullanıcılar kitapları kategoriye göre filtrelemeli",
+      "FR-02": "Kullanıcılar ürünleri sepetlerine ekleyebilmeli",
+      "FR-03": "Sistem kullanıcıların geçmiş alışverişlerine göre kitap önerileri sunabilmeli",
+      "FR-04": "Yönetici (Admin) sisteme yeni kitaplar ekleyebilmeli.",
+      "FR-05": "Kullanıcılar, çeşitli ödeme yöntemlerini (kredi kartı, banka havalesi, mobil ödeme vb.) kullanarak siparişlerini tamamlayabilmeli.",
+      "FR-06": "Kullanıcılar sisteme kayıt olabilmeli, giriş yapabilmeli ve profil bilgilerini güncelleyebilmeli.",
+      "FR-07": "Kullanıcılar geçmiş siparişlerini görüntüleyebilmeli, sipariş durumunu takip edebilmeli ve belirli bir süre içinde iptal/iade talebinde bulunabilmeli.",
+      "FR-08": "Kullanıcılar, kitapların detay sayfalarını (yazar, yayınevi, özet, fiyat, yorumlar, puanlama) görüntüleyebilmeli.",
+      "FR-09": "Kullanıcılar, kitapları anahtar kelime, yazar, yayınevi veya ISBN numarasına göre arayabilmeli.",
+      "FR-10": "Yönetici (Admin), müşteri siparişlerini görüntüleyebilmeli, sipariş durumlarını güncelleyebilmeli ve sevk/teslimat süreçlerini yönetebilmeli.",
+      "FR-11": "Kullanıcılar, siparişleriyle ilgili sorunlar için müşteri hizmetleri ile iletişime geçebilmeli (örn: iletişim formu, canlı destek)."
+    },
+    "fonksiyonel_olmayan_gereksinimler": {
+      "NFR-01": "Sistem hızlı yanıt vermeli ve performanslı olmalı.",
+      "NFR-02": "Sistemdeki verilerin güvenliği sağlanmalı.",
+      "NFR-03": "Kullanıcı bilgileri (kayıt, şifreler) ve ödeme işlemleri güvenli bir şekilde şifrelenmeli ve saklanmalı, ilgili yasal düzenlemelere (örn: KVKK) uyulmalı.",
+      "NFR-04": "Kullanıcı arayüzü, hem son kullanıcılar hem de yöneticiler için sezgisel, kolay anlaşılır ve kullanıcı dostu olmalı.",
+      "NFR-05": "Sistem, gelecekteki kullanıcı artışına ve ürün çeşitliliğine uyum sağlayabilecek şekilde ölçeklenebilir olmalı."
+    },
+    "kullanim_senaryolari": [
       {
-        "teknoloji": "Veritabanı",
-        "detay": "Kitap bilgileri, kullanıcı verileri, sipariş bilgileri, stok verileri için (örn: PostgreSQL, MongoDB)."
+        "id": "UC-01",
+        "adimlar": [
+          "Kitapların listelendiği, kategori filtrelerinin bulunduğu sayfa."
+        ]
       },
       {
-        "teknoloji": "Backend Framework",
-        "detay": "API servislerini geliştirmek için (örn: Python/Django/Flask, Node.js/Express, Java/Spring Boot)."
+        "id": "UC-02",
+        "adimlar": [
+          "Kitabın detaylı bilgilerinin, fiyatının, yorumların gösterildiği sayfa."
+        ]
       },
       {
-        "teknoloji": "Frontend Framework",
-        "detay": "Kullanıcı arayüzü için (örn: React, Vue.js, Angular)."
+        "id": "UC-03",
+        "adimlar": [
+          "Eklenen ürünlerin görüntülendiği, adetlerin düzenlenebildiği sayfa."
+        ]
       },
       {
-        "teknoloji": "Ödeme Ağ Geçidi Entegrasyonu",
-        "detay": "Online ödemeler için (örn: Stripe, Iyzico)."
+        "id": "UC-04",
+        "adimlar": [
+          "Kullanıcının ödeme bilgilerini girdiği ve siparişi tamamladığı sayfa."
+        ]
       },
       {
-        "teknoloji": "Öneri Sistemi",
-        "detay": "Geçmiş alışverişlere göre kitap önerileri için (örn: Makine Öğrenmesi algoritmaları, LLM entegrasyonu)."
+        "id": "UC-05",
+        "adimlar": [
+          "Kullanıcının kişisel bilgilerini, adreslerini ve geçmiş siparişlerini görebildiği sayfa."
+        ]
       },
       {
-        "teknoloji": "Sunucu/Bulut Platformu",
-        "detay": "Uygulamanın barındırılması ve ölçeklenmesi için (örn: AWS, Google Cloud, Azure)."
+        "id": "UC-06",
+        "adimlar": [
+          "Kitap ekleme, stok güncelleme, sipariş yönetimi ekranları."
+        ]
       }
     ],
-    "arayuz_ekran_bilesenleri": [
-      {
-        "bilesen": "Ana Sayfa",
-        "detay": "Kitapların listelendiği, kategori filtrelerinin bulunduğu sayfa."
-      },
-      {
-        "bilesen": "Kitap Detay Sayfası",
-        "detay": "Kitabın detaylı bilgilerinin, fiyatının, yorumların gösterildiği sayfa."
-      },
-      {
-        "bilesen": "Sepet Sayfası",
-        "detay": "Eklenen ürünlerin görüntülendiği, adetlerin düzenlenebildiği sayfa."
-      },
-      {
-        "bilesen": "Ödeme Sayfası",
-        "detay": "Kullanıcının ödeme bilgilerini girdiği ve siparişi tamamladığı sayfa."
-      },
-      {
-        "bilesen": "Kullanıcı Profili/Siparişlerim",
-        "detay": "Kullanıcının kişisel bilgilerini, adreslerini ve geçmiş siparişlerini görebildiği sayfa."
-      },
-      {
-        "bilesen": "Yönetici Paneli (Admin)",
-        "detay": "Kitap ekleme, stok güncelleme, sipariş yönetimi ekranları."
-      }
-    ],
-    "olasi_risk_ve_sorumluluklar": [
-      {
-        "risk": "Veri Güvenliği İhlali",
-        "sorumluluk": "Kullanıcıların kişisel ve ödeme bilgilerinin çalınması, KVKK/GDPR uyumsuzluğu. Hukuki ve finansal sorumluluklar."
-      },
-      {
-        "risk": "Sistem Performans Sorunları",
-        "sorumluluk": "Yüksek trafik altında sistemin yavaşlaması veya çökmesi, kullanıcı deneyiminin kötüleşmesi, satış kaybı. Marka itibarının zedelenmesi."
-      },
-      {
-        "risk": "Yanlış Ürün Önerileri",
-        "sorumluluk": "Öneri sisteminin alakasız veya kalitesiz öneriler sunması, kullanıcı memnuniyetsizliği, satışlara olumsuz etki."
-      },
-      {
-        "risk": "Ödeme Sistemi Hataları",
-        "sorumluluk": "Ödeme işlemlerinde yaşanacak teknik sorunlar, kullanıcıların ödeme yapamaması veya hatalı ödemeler, finansal kayıplar ve güven kaybı."
-      },
-      {
-        "risk": "Stok Yönetimi Tutarsızlıkları",
-        "sorumluluk": "Yanlış stok bilgileri nedeniyle fazla satış veya eksik ürün, müşteri memnuniyetsizliği, iade ve iptal süreçleri."
-      },
-      {
-        "risk": "Yasal Uyumsuzluklar",
-        "sorumluluk": "E-ticaret kanunları, tüketici hakları, vergi mevzuatı gibi konularda yasal uyumsuzluklar. Para cezaları, lisans iptalleri."
-      }
-    ],
-    "mvp_onerisi": {
-      "aciklama": "Platformun en temel ve çalışır versiyonu, kullanıcının minimum çabayla bir kitap satın almasını sağlayacak temel özelliklere odaklanmalıdır.",
-      "ozellikler": [
-        "Kullanıcı kayıt ve giriş",
-        "Kitapları kategoriye göre filtreleme ve arama",
-        "Kitap detaylarını görüntüleme",
-        "Sepete ürün ekleme",
-        "Temel ödeme (tek ödeme yöntemi)",
-        "Admin paneli üzerinden temel kitap ekleme ve stok güncelleme"
+    "is_kurallari": {
+      "BR-01": "Kullanıcıların kişisel ve ödeme bilgilerinin çalınması, KVKK/GDPR uyumsuzluğu. Hukuki ve finansal sorumluluklar.",
+      "BR-02": "Yüksek trafik altında sistemin yavaşlaması veya çökmesi, kullanıcı deneyiminin kötüleşmesi, satış kaybı. Marka itibarının zedelenmesi.",
+      "BR-03": "Öneri sisteminin alakasız veya kalitesiz öneriler sunması, kullanıcı memnuniyetsizliği, satışlara olumsuz etki.",
+      "BR-04": "Ödeme işlemlerinde yaşanacak teknik sorunlar, kullanıcıların ödeme yapamaması veya hatalı ödemeler, finansal kayıplar ve güven kaybı.",
+      "BR-05": "Yanlış stok bilgileri nedeniyle fazla satış veya eksik ürün, müşteri memnuniyetsizliği, iade ve iptal süreçleri.",
+      "BR-06": "E-ticaret kanunları, tüketici hakları, vergi mevzuatı gibi konularda yasal uyumsuzluklar. Para cezaları, lisans iptalleri."
+    },
+    "veri_gereksinimleri": {
+      "tahmini_veri_kumesi": [
+        "kullanıcı bilgileri",
+        "sistem logları",
+        "uygulama içeriği",
+        "etkileşim geçmişi"
       ]
+    },
+    "sistem_gereksinimleri": {
+      "Veritabanı": "Kitap bilgileri, kullanıcı verileri, sipariş bilgileri, stok verileri için (örn: PostgreSQL, MongoDB).",
+      "Backend Framework": "API servislerini geliştirmek için (örn: Python/Django/Flask, Node.js/Express, Java/Spring Boot).",
+      "Frontend Framework": "Kullanıcı arayüzü için (örn: React, Vue.js, Angular).",
+      "Ödeme Ağ Geçidi Entegrasyonu": "Online ödemeler için (örn: Stripe, Iyzico).",
+      "Öneri Sistemi": "Geçmiş alışverişlere göre kitap önerileri için (örn: Makine Öğrenmesi algoritmaları, LLM entegrasyonu).",
+      "Sunucu/Bulut Platformu": "Uygulamanın barındırılması ve ölçeklenmesi için (örn: AWS, Google Cloud, Azure)."
     }
   },
   {
-    "senaryo_adi": "Online Randevu ve Hatırlatma Sistemi",
-    "senaryo_metni": "Kullanıcılar doktor, kuaför, özel ders gibi hizmetler için online randevu alabilir. Sistem, yaklaşan randevuları SMS veya e-posta ile hatırlatır.",
-    "gereksinimler": [
-      {
-        "metin": "Kullanıcılar farklı hizmet sağlayıcılar arasından seçim yapabilmelidir.",
-        "tip": "FR"
-      },
-      {
-        "metin": "Kullanıcılar uygun tarih/saat aralığında randevu alabilmelidir.",
-        "tip": "FR"
-      },
-      {
-        "metin": "Randevular kullanıcı takvimine eklenebilmelidir.",
-        "tip": "FR"
-      },
-      {
-        "metin": "Sistem yaklaşan randevuları SMS/e-posta ile hatırlatmalıdır.",
-        "tip": "FR"
-      },
-      {
-        "metin": "SMS/e-posta gönderimi randevudan en geç 1 saat önce yapılmalıdır.",
-        "tip": "NFR"
-      },
-      {
-        "metin": "Uygulama 7/24 erişilebilir olmalıdır.",
-        "tip": "NFR"
-      },
-      {
-        "metin": "Kullanıcı verileri gizlilik politikasına uygun saklanmalıdır (KVKK/GDPR).",
-        "tip": "NFR"
-      }
-    ],
-    "oneriler": [
-      {
-        "tip": "FR - İptal/Değişiklik",
-        "detay": "Kullanıcılar aldıkları randevuları belirli bir süre öncesine kadar (örn: 24 saat) iptal edebilmeli veya tarihini değiştirebilmeli."
-      },
-      {
-        "tip": "FR - Puanlama/Yorum",
-        "detay": "Hizmet sağlayıcılar için (doktor, kuaför vb.) puanlama ve yorum yapma sistemi eklenmeli, böylece diğer kullanıcılar seçim yaparken referans alabilir."
-      },
-      {
-        "tip": "FR - Hizmet Sağlayıcı Yönetim Paneli",
-        "detay": "Hizmet sağlayıcılar (doktorlar, kuaförler) kendi randevu takvimlerini, müsaitlik durumlarını ve hizmet bilgilerini yönetebilecekleri bir panele sahip olmalı."
-      },
-      {
-        "tip": "NFR - Güvenlik (Yetkilendirme)",
-        "detay": "Sistem, kullanıcıların ve hizmet sağlayıcıların rol tabanlı yetkilendirme ile sadece kendi yetki alanlarındaki verilere erişebilmesini sağlamalıdır."
-      },
-      {
-        "tip": "NFR - Ölçeklenebilirlik",
-        "detay": "Sistem, artan randevu taleplerini ve hizmet sağlayıcı sayısını kaldırabilecek şekilde ölçeklenebilir bir mimariye sahip olmalıdır."
-      },
-      {
-        "tip": "FR - Ödeme Entegrasyonu",
-        "detay": "Randevu alımı sırasında veya hizmet sonrası online ödeme yapabilme seçeneği entegre edilmeli."
-      }
-    ],
+    "proje_adi": "Online Randevu ve Hatırlatma Sistemi",
+    "giris": {
+      "amac": "Bu belge, Online Randevu ve Hatırlatma Sistemi sistemine ait gereksinimleri tanımlar. Sistem, Kullanıcılar doktor, kuaför, özel ders gibi hizmetler için online randevu alabilir. Sistem, yaklaşan randevuları SMS veya e-posta ile hatırlatır.",
+      "kapsam": "Proje kapsamında hedeflenen temel işlevler, sistemin destekleyeceği kullanıcı rollerine ve süreçlerine göre şekillendirilmiştir."
+    },
     "kullanici_rolleri": [
       {
         "rol": "Hasta/Müşteri",
-        "detay": "Randevu alan, randevularını takip eden ve hatırlatıcılar alan kişi."
+        "gorevler": [
+          "Randevu alan, randevularını takip eden ve hatırlatıcılar alan kişi."
+        ]
       },
       {
         "rol": "Hizmet Sağlayıcı (Doktor, Kuaför vb.)",
-        "detay": "Kendi takvimini yöneten, müsaitlik belirleyen, randevuları onaylayan veya reddeden kişi."
+        "gorevler": [
+          "Kendi takvimini yöneten, müsaitlik belirleyen, randevuları onaylayan veya reddeden kişi."
+        ]
       },
       {
         "rol": "Sistem Yöneticisi (Opsiyonel)",
-        "detay": "Genel sistem ayarlarını, hizmet sağlayıcıları ve kullanıcıları yöneten kişi."
+        "gorevler": [
+          "Genel sistem ayarlarını, hizmet sağlayıcıları ve kullanıcıları yöneten kişi."
+        ]
       }
     ],
-    "teknik_gereksinimler": [
+    "fonksiyonel_gereksinimler": {
+      "FR-01": "Kullanıcılar farklı hizmet sağlayıcılar arasından seçim yapabilmelidir.",
+      "FR-02": "Kullanıcılar uygun tarih/saat aralığında randevu alabilmelidir.",
+      "FR-03": "Randevular kullanıcı takvimine eklenebilmelidir.",
+      "FR-04": "Sistem yaklaşan randevuları SMS/e-posta ile hatırlatmalıdır.",
+      "FR-05": "Kullanıcılar aldıkları randevuları belirli bir süre öncesine kadar (örn: 24 saat) iptal edebilmeli veya tarihini değiştirebilmeli.",
+      "FR-06": "Hizmet sağlayıcılar için (doktor, kuaför vb.) puanlama ve yorum yapma sistemi eklenmeli, böylece diğer kullanıcılar seçim yaparken referans alabilir.",
+      "FR-07": "Hizmet sağlayıcılar (doktorlar, kuaförler) kendi randevu takvimlerini, müsaitlik durumlarını ve hizmet bilgilerini yönetebilecekleri bir panele sahip olmalı.",
+      "FR-08": "Randevu alımı sırasında veya hizmet sonrası online ödeme yapabilme seçeneği entegre edilmeli."
+    },
+    "fonksiyonel_olmayan_gereksinimler": {
+      "NFR-01": "SMS/e-posta gönderimi randevudan en geç 1 saat önce yapılmalıdır.",
+      "NFR-02": "Uygulama 7/24 erişilebilir olmalıdır.",
+      "NFR-03": "Kullanıcı verileri gizlilik politikasına uygun saklanmalıdır (KVKK/GDPR).",
+      "NFR-04": "Sistem, kullanıcıların ve hizmet sağlayıcıların rol tabanlı yetkilendirme ile sadece kendi yetki alanlarındaki verilere erişebilmesini sağlamalıdır.",
+      "NFR-05": "Sistem, artan randevu taleplerini ve hizmet sağlayıcı sayısını kaldırabilecek şekilde ölçeklenebilir bir mimariye sahip olmalıdır."
+    },
+    "kullanim_senaryolari": [
       {
-        "teknoloji": "Veritabanı",
-        "detay": "Randevu, kullanıcı, hizmet sağlayıcı ve hizmet bilgileri için (örn: PostgreSQL, MySQL)."
+        "id": "UC-01",
+        "adimlar": [
+          "Kullanıcının randevu almak istediği hizmeti veya sağlayıcıyı seçtiği ekran."
+        ]
       },
       {
-        "teknoloji": "Backend Servisleri",
-        "detay": "Randevu oluşturma/yönetme, hatırlatma gönderme mantığı için (örn: Python/Django, Node.js/Express)."
+        "id": "UC-02",
+        "adimlar": [
+          "Uygun tarih ve saatlerin gösterildiği, randevu seçimi yapılan takvim arayüzü."
+        ]
       },
       {
-        "teknoloji": "Frontend Uygulama",
-        "detay": "Web veya mobil arayüz için (örn: React, Angular, Vue.js, React Native, Flutter)."
+        "id": "UC-03",
+        "adimlar": [
+          "Randevu detaylarının görüntülendiği ve onaylandığı ekran."
+        ]
       },
       {
-        "teknoloji": "SMS/E-posta Entegrasyonu",
-        "detay": "Hatırlatma gönderimleri için (örn: Twilio, SendGrid API)."
+        "id": "UC-04",
+        "adimlar": [
+          "Kullanıcının mevcut ve geçmiş randevularını görüntüleyebildiği ekran."
+        ]
       },
       {
-        "teknoloji": "Takvim Entegrasyonu",
-        "detay": "Google Calendar, Outlook Calendar gibi takvimlerle entegrasyon için."
+        "id": "UC-05",
+        "adimlar": [
+          "Hizmet sağlayıcıların randevu ve takvimlerini yönettiği arayüz."
+        ]
       },
       {
-        "teknoloji": "Bulut Platformu",
-        "detay": "Uygulamanın barındırılması ve ölçeklenmesi için (örn: AWS, Google Cloud, Azure)."
+        "id": "UC-06",
+        "adimlar": [
+          "Kullanıcıların kişisel bilgilerini ve bildirim tercihlerini güncellediği ekran."
+        ]
       }
     ],
-    "arayuz_ekran_bilesenleri": [
-      {
-        "bilesen": "Hizmet/Sağlayıcı Seçim Ekranı",
-        "detay": "Kullanıcının randevu almak istediği hizmeti veya sağlayıcıyı seçtiği ekran."
-      },
-      {
-        "bilesen": "Randevu Takvim Ekranı",
-        "detay": "Uygun tarih ve saatlerin gösterildiği, randevu seçimi yapılan takvim arayüzü."
-      },
-      {
-        "bilesen": "Randevu Onay Ekranı",
-        "detay": "Randevu detaylarının görüntülendiği ve onaylandığı ekran."
-      },
-      {
-        "bilesen": "Randevularım/Geçmiş Randevular Ekranı",
-        "detay": "Kullanıcının mevcut ve geçmiş randevularını görüntüleyebildiği ekran."
-      },
-      {
-        "bilesen": "Hizmet Sağlayıcı Yönetim Paneli",
-        "detay": "Hizmet sağlayıcıların randevu ve takvimlerini yönettiği arayüz."
-      },
-      {
-        "bilesen": "Profil ve Ayarlar Ekranı",
-        "detay": "Kullanıcıların kişisel bilgilerini ve bildirim tercihlerini güncellediği ekran."
-      }
-    ],
-    "olasi_risk_ve_sorumluluklar": [
-      {
-        "risk": "Randevu Çakışmaları/Hataları",
-        "sorumluluk": "Yanlış randevu saati/tarihi, çakışan randevular. Müşteri memnuniyetsizliği, hizmet sağlayıcı için gelir kaybı."
-      },
-      {
-        "risk": "Veri Gizliliği İhlali",
-        "sorumluluk": "Kullanıcı ve hasta/müşteri bilgilerinin sızması. KVKK/GDPR uyumsuzluğu, hukuki yaptırımlar, itibar kaybı."
-      },
-      {
-        "risk": "Hatırlatma Bildirimlerinin Ulaşmaması",
-        "sorumluluk": "SMS/e-posta hatırlatmalarının teknik sorunlar nedeniyle ulaşmaması, randevu kaçırma. Kullanıcı şikayetleri."
-      },
-      {
-        "risk": "Sistem Kesintisi",
-        "sorumluluk": "Uygulamanın erişilemez hale gelmesi, randevu alma/yönetme işlemlerinin durması. Müşteri kaybı, operasyonel aksaklıklar."
-      },
-      {
-        "risk": "Ödeme Sistemi Güvenlik Açıkları",
-        "sorumluluk": "Randevu ödemelerinin yapıldığı entegrasyonda güvenlik açıkları, finansal dolandırıcılık. Yasal ve finansal sorumluluklar."
-      },
-      {
-        "risk": "Yasal Uyumsuzluklar (Sağlık Verileri)",
-        "sorumluluk": "Özellikle sağlık hizmetlerinde tıbbi veri işleme konusundaki yasalara (HIPAA vb.) uyumsuzluk. Büyük para cezaları, lisans iptali."
-      }
-    ],
-    "mvp_onerisi": {
-      "aciklama": "MVP, kullanıcıların temel randevu alma ve hizmet sağlayıcıların randevularını görüntüleme/onaylama işlevlerine odaklanmalıdır.",
-      "ozellikler": [
-        "Kullanıcı ve hizmet sağlayıcı kayıt/giriş",
-        "Hizmet sağlayıcıların müsaitlik takvimini belirlemesi",
-        "Kullanıcıların randevu alabilmesi (tek bir hizmet türü için)",
-        "Hizmet sağlayıcıların randevularını görüntüleyebilmesi ve onaylayabilmesi",
-        "Temel SMS/e-posta randevu hatırlatıcıları"
+    "is_kurallari": {
+      "BR-01": "Yanlış randevu saati/tarihi, çakışan randevular. Müşteri memnuniyetsizliği, hizmet sağlayıcı için gelir kaybı.",
+      "BR-02": "Kullanıcı ve hasta/müşteri bilgilerinin sızması. KVKK/GDPR uyumsuzluğu, hukuki yaptırımlar, itibar kaybı.",
+      "BR-03": "SMS/e-posta hatırlatmalarının teknik sorunlar nedeniyle ulaşmaması, randevu kaçırma. Kullanıcı şikayetleri.",
+      "BR-04": "Uygulamanın erişilemez hale gelmesi, randevu alma/yönetme işlemlerinin durması. Müşteri kaybı, operasyonel aksaklıklar.",
+      "BR-05": "Randevu ödemelerinin yapıldığı entegrasyonda güvenlik açıkları, finansal dolandırıcılık. Yasal ve finansal sorumluluklar.",
+      "BR-06": "Özellikle sağlık hizmetlerinde tıbbi veri işleme konusundaki yasalara (HIPAA vb.) uyumsuzluk. Büyük para cezaları, lisans iptali."
+    },
+    "veri_gereksinimleri": {
+      "tahmini_veri_kumesi": [
+        "kullanıcı bilgileri",
+        "sistem logları",
+        "uygulama içeriği",
+        "etkileşim geçmişi"
       ]
+    },
+    "sistem_gereksinimleri": {
+      "Veritabanı": "Randevu, kullanıcı, hizmet sağlayıcı ve hizmet bilgileri için (örn: PostgreSQL, MySQL).",
+      "Backend Servisleri": "Randevu oluşturma/yönetme, hatırlatma gönderme mantığı için (örn: Python/Django, Node.js/Express).",
+      "Frontend Uygulama": "Web veya mobil arayüz için (örn: React, Angular, Vue.js, React Native, Flutter).",
+      "SMS/E-posta Entegrasyonu": "Hatırlatma gönderimleri için (örn: Twilio, SendGrid API).",
+      "Takvim Entegrasyonu": "Google Calendar, Outlook Calendar gibi takvimlerle entegrasyon için.",
+      "Bulut Platformu": "Uygulamanın barındırılması ve ölçeklenmesi için (örn: AWS, Google Cloud, Azure)."
     }
   },
   {
-    "senaryo_adi": "Yapay Zeka Destekli CV Analiz Aracı",
-    "senaryo_metni": "Kullanıcı CV’sini yükler. Sistem güçlü/zayıf yönlerini analiz eder ve pozisyon uyumluluğu puanı verir. Eksik yönler için öneriler sunar.",
-    "gereksinimler": [
-      {
-        "metin": "Kullanıcı PDF formatında CV yükleyebilmelidir.",
-        "tip": "FR"
-      },
-      {
-        "metin": "Sistem CV’deki tecrübe, beceri, eğitim gibi alanları ayrıştırmalıdır.",
-        "tip": "FR"
-      },
-      {
-        "metin": "Sistem yüklenen CV’ye uygunluk puanı vermelidir.",
-        "tip": "FR"
-      },
-      {
-        "metin": "Sistem eksik yönler için öneriler sunmalıdır.",
-        "tip": "FR"
-      },
-      {
-        "metin": "CV analiz süresi 5 saniyeyi geçmemelidir.",
-        "tip": "NFR"
-      },
-      {
-        "metin": "Sistemde yüklenen CV'ler şifreli biçimde saklanmalıdır.",
-        "tip": "NFR"
-      },
-      {
-        "metin": "Desteklenen diller en az Türkçe ve İngilizce olmalıdır.",
-        "tip": "NFR"
-      }
-    ],
-    "oneriler": [
-      {
-        "tip": "FR - İş İlanı Eşleştirme",
-        "detay": "Kullanıcılar, analiz edilmesini istedikleri bir iş ilanını (metin veya PDF) yükleyebilmeli ve sistem CV'lerini bu ilana göre daha spesifik olarak değerlendirip eşleştirme puanı ve öneriler sunmalıdır."
-      },
-      {
-        "tip": "FR - Gelişim Planı Oluşturma",
-        "detay": "Sistem, analiz sonuçlarına ve kullanıcının hedeflediği pozisyonlara göre kişiye özel gelişim planları (kurs önerileri, beceri geliştirme yolları) önerebilmelidir."
-      },
-      {
-        "tip": "NFR - Veri Gizliliği ve Anonimleştirme",
-        "detay": "Yüklenen CV'lerdeki kişisel hassas veriler (isim, iletişim bilgileri vb.) analiz sürecinden önce anonimleştirilmeli veya silinmeli, kullanıcı onayı alınmalıdır."
-      },
-      {
-        "tip": "NFR - Doğruluk ve Güvenilirlik",
-        "detay": "Sistemin CV analizi ve önerileri yüksek doğruluk oranına sahip olmalı ve güvenilir sonuçlar sunmalıdır (örn: %90 doğruluk)."
-      },
-      {
-        "tip": "FR - Farklı CV Formatları Desteği",
-        "detay": "PDF dışında DOCX veya TXT gibi farklı CV formatlarının da yüklenip analiz edilebilmesi sağlanmalıdır."
-      },
-      {
-        "tip": "FR - Detaylı Raporlama",
-        "detay": "Sistem, analiz sonuçlarını detaylı bir rapor (grafikler, puan dağılımları, öne çıkan anahtar kelimeler) şeklinde sunabilmelidir."
-      }
-    ],
+    "proje_adi": "Yapay Zeka Destekli CV Analiz Aracı",
+    "giris": {
+      "amac": "Bu belge, Yapay Zeka Destekli CV Analiz Aracı sistemine ait gereksinimleri tanımlar. Sistem, Kullanıcı CV’sini yükler. Sistem güçlü/zayıf yönlerini analiz eder ve pozisyon uyumluluğu puanı verir. Eksik yönler için öneriler sunar.",
+      "kapsam": "Proje kapsamında hedeflenen temel işlevler, sistemin destekleyeceği kullanıcı rollerine ve süreçlerine göre şekillendirilmiştir."
+    },
     "kullanici_rolleri": [
       {
         "rol": "İş Arayan/Aday",
-        "detay": "CV'sini yükleyen, analiz sonuçlarını ve önerileri alan kişi."
+        "gorevler": [
+          "CV'sini yükleyen, analiz sonuçlarını ve önerileri alan kişi."
+        ]
       },
       {
         "rol": "İK Uzmanı/İşveren (Opsiyonel)",
-        "detay": "Çoklu CV'leri topluca analiz edebilen, iş ilanlarıyla eşleştirebilen (eğer eklenirse) kişi."
+        "gorevler": [
+          "Çoklu CV'leri topluca analiz edebilen, iş ilanlarıyla eşleştirebilen (eğer eklenirse) kişi."
+        ]
       }
     ],
-    "teknik_gereksinimler": [
+    "fonksiyonel_gereksinimler": {
+      "FR-01": "Kullanıcı PDF formatında CV yükleyebilmelidir.",
+      "FR-02": "Sistem CV’deki tecrübe, beceri, eğitim gibi alanları ayrıştırmalıdır.",
+      "FR-03": "Sistem yüklenen CV’ye uygunluk puanı vermelidir.",
+      "FR-04": "Sistem eksik yönler için öneriler sunmalıdır.",
+      "FR-05": "Kullanıcılar, analiz edilmesini istedikleri bir iş ilanını (metin veya PDF) yükleyebilmeli ve sistem CV'lerini bu ilana göre daha spesifik olarak değerlendirip eşleştirme puanı ve öneriler sunmalıdır.",
+      "FR-06": "Sistem, analiz sonuçlarına ve kullanıcının hedeflediği pozisyonlara göre kişiye özel gelişim planları (kurs önerileri, beceri geliştirme yolları) önerebilmelidir.",
+      "FR-07": "PDF dışında DOCX veya TXT gibi farklı CV formatlarının da yüklenip analiz edilebilmesi sağlanmalıdır.",
+      "FR-08": "Sistem, analiz sonuçlarını detaylı bir rapor (grafikler, puan dağılımları, öne çıkan anahtar kelimeler) şeklinde sunabilmelidir."
+    },
+    "fonksiyonel_olmayan_gereksinimler": {
+      "NFR-01": "CV analiz süresi 5 saniyeyi geçmemelidir.",
+      "NFR-02": "Sistemde yüklenen CV'ler şifreli biçimde saklanmalıdır.",
+      "NFR-03": "Desteklenen diller en az Türkçe ve İngilizce olmalıdır.",
+      "NFR-04": "Yüklenen CV'lerdeki kişisel hassas veriler (isim, iletişim bilgileri vb.) analiz sürecinden önce anonimleştirilmeli veya silinmeli, kullanıcı onayı alınmalıdır.",
+      "NFR-05": "Sistemin CV analizi ve önerileri yüksek doğruluk oranına sahip olmalı ve güvenilir sonuçlar sunmalıdır (örn: %90 doğruluk)."
+    },
+    "kullanim_senaryolari": [
       {
-        "teknoloji": "OCR (Optik Karakter Tanıma)",
-        "detay": "PDF'lerden metin çıkarmak için (örn: Tesseract, Google Cloud Vision AI)."
+        "id": "UC-01",
+        "adimlar": [
+          "Kullanıcının CV dosyasını sürükle bırak veya seç yöntemiyle yükleyebildiği arayüz."
+        ]
       },
       {
-        "teknoloji": "NLP (Doğal Dil İşleme) Modeli",
-        "detay": "CV metnini ayrıştırmak, anahtar kelimeleri çıkarmak, uygunluk puanı vermek ve öneri oluşturmak için (örn: SpaCy, NLTK, veya Gemini/GPT gibi LLM entegrasyonu)."
+        "id": "UC-02",
+        "adimlar": [
+          "Güçlü/zayıf yönlerin, uygunluk puanının ve detaylı analiz raporunun gösterildiği ekran."
+        ]
       },
       {
-        "teknoloji": "Makine Öğrenmesi Modeli",
-        "detay": "Pozisyon uyumluluğu puanlaması ve gelişim önerileri için (eğitimli bir sınıflandırma/regresyon modeli)."
+        "id": "UC-03",
+        "adimlar": [
+          "Sistem tarafından sunulan iyileştirme önerilerinin listelendiği ve açıklandığı bölüm."
+        ]
       },
       {
-        "teknoloji": "Veritabanı",
-        "detay": "Kullanıcı verileri, CV analiz geçmişi, iş ilanları (eğer entegre edilirse) için."
-      },
-      {
-        "teknoloji": "Backend Servisleri",
-        "detay": "CV yükleme, analiz tetikleme, sonuçları sunma için."
-      },
-      {
-        "teknoloji": "Bulut Depolama",
-        "detay": "Yüklenen CV dosyalarının geçici ve güvenli saklanması için."
+        "id": "UC-04",
+        "adimlar": [
+          "Kullanıcının bir iş ilanı yükleyip CV'si ile eşleştirme analizi yapabildiği arayüz."
+        ]
       }
     ],
-    "arayuz_ekran_bilesenleri": [
-      {
-        "bilesen": "CV Yükleme Ekranı",
-        "detay": "Kullanıcının CV dosyasını sürükle bırak veya seç yöntemiyle yükleyebildiği arayüz."
-      },
-      {
-        "bilesen": "Analiz Sonuçları/Rapor Ekranı",
-        "detay": "Güçlü/zayıf yönlerin, uygunluk puanının ve detaylı analiz raporunun gösterildiği ekran."
-      },
-      {
-        "bilesen": "Öneri Listesi Ekranı",
-        "detay": "Sistem tarafından sunulan iyileştirme önerilerinin listelendiği ve açıklandığı bölüm."
-      },
-      {
-        "bilesen": "İş İlanı Yükleme/Eşleştirme Ekranı (Eğer Eklenirse)",
-        "detay": "Kullanıcının bir iş ilanı yükleyip CV'si ile eşleştirme analizi yapabildiği arayüz."
-      }
-    ],
-    "olasi_risk_ve_sorumluluklar": [
-      {
-        "risk": "Yanlış/Hatalı Analiz Sonuçları",
-        "sorumluluk": "Sistemin CV'yi yanlış yorumlaması, hatalı puan veya öneriler sunması. Kullanıcıda güven kaybı, kötü kariyer kararlarına yol açma riski."
-      },
-      {
-        "risk": "Veri Güvenliği ve Gizlilik İhlali",
-        "sorumluluk": "Kişisel hassas veriler içeren CV'lerin sızması veya kötüye kullanılması. KVKK/GDPR uyumsuzluğu, hukuki yaptırımlar, itibar kaybı."
-      },
-      {
-        "risk": "Performans/Hız Sorunları",
-        "sorumluluk": "CV analiz sürecinin uzun sürmesi, kullanıcı deneyiminin kötüleşmesi. Kullanıcı memnuniyetsizliği, uygulamanın terk edilmesi."
-      },
-      {
-        "risk": "Eğitim Verisi Bias'ı",
-        "sorumluluk": "Modelin eğitildiği verideki önyargılar nedeniyle ayrımcı sonuçlar üretmesi (örn: cinsiyet, yaş, ırk ayrımı). Etik ve yasal sorumluluklar, büyük itibar kaybı."
-      },
-      {
-        "risk": "Yasal Uyumsuzluklar (İş Kanunu)",
-        "sorumluluk": "CV analizinin işe alım süreçlerinde ayrımcılığa yol açan bir araç olarak kullanılması. Yasal yaptırımlar."
-      }
-    ],
-    "mvp_onerisi": {
-      "aciklama": "MVP, kullanıcıların PDF CV yükleyip, sistemin temel alanları ayrıştırarak basit bir güçlü/zayıf yönler analizi ve uyumluluk puanı vermesi özelliklerine odaklanmalıdır.",
-      "ozellikler": [
-        "PDF CV yükleme",
-        "CV'deki temel alanları (tecrübe, beceri, eğitim) ayrıştırma",
-        "Basit bir uygunluk puanı (genel geçer kurallara göre)",
-        "Güçlü/zayıf yönlerin metinsel olarak listelenmesi",
-        "Temel iyileştirme önerileri sunma (genel geçer eksiklikler için)"
+    "is_kurallari": {
+      "BR-01": "Sistemin CV'yi yanlış yorumlaması, hatalı puan veya öneriler sunması. Kullanıcıda güven kaybı, kötü kariyer kararlarına yol açma riski.",
+      "BR-02": "Kişisel hassas veriler içeren CV'lerin sızması veya kötüye kullanılması. KVKK/GDPR uyumsuzluğu, hukuki yaptırımlar, itibar kaybı.",
+      "BR-03": "CV analiz sürecinin uzun sürmesi, kullanıcı deneyiminin kötüleşmesi. Kullanıcı memnuniyetsizliği, uygulamanın terk edilmesi.",
+      "BR-04": "Modelin eğitildiği verideki önyargılar nedeniyle ayrımcı sonuçlar üretmesi (örn: cinsiyet, yaş, ırk ayrımı). Etik ve yasal sorumluluklar, büyük itibar kaybı.",
+      "BR-05": "CV analizinin işe alım süreçlerinde ayrımcılığa yol açan bir araç olarak kullanılması. Yasal yaptırımlar."
+    },
+    "veri_gereksinimleri": {
+      "tahmini_veri_kumesi": [
+        "kullanıcı bilgileri",
+        "sistem logları",
+        "uygulama içeriği",
+        "etkileşim geçmişi"
       ]
+    },
+    "sistem_gereksinimleri": {
+      "OCR (Optik Karakter Tanıma)": "PDF'lerden metin çıkarmak için (örn: Tesseract, Google Cloud Vision AI).",
+      "NLP (Doğal Dil İşleme) Modeli": "CV metnini ayrıştırmak, anahtar kelimeleri çıkarmak, uygunluk puanı vermek ve öneri oluşturmak için (örn: SpaCy, NLTK, veya Gemini/GPT gibi LLM entegrasyonu).",
+      "Makine Öğrenmesi Modeli": "Pozisyon uyumluluğu puanlaması ve gelişim önerileri için (eğitimli bir sınıflandırma/regresyon modeli).",
+      "Veritabanı": "Kullanıcı verileri, CV analiz geçmişi, iş ilanları (eğer entegre edilirse) için.",
+      "Backend Servisleri": "CV yükleme, analiz tetikleme, sonuçları sunma için.",
+      "Bulut Depolama": "Yüklenen CV dosyalarının geçici ve güvenli saklanması için."
     }
   },
   {
-    "senaryo_adi": "AI ile Otomatik Mail Yanıtlama Sistemi",
-    "senaryo_metni": "Kullanıcı gelen e-postalarını sisteme bağlar. Sistem e-postaları analiz eder ve otomatik yanıt önerileri sunar. Kullanıcı onaylarsa gönderilir.",
-    "gereksinimler": [
-      {
-        "metin": "Kullanıcılar e-posta hesaplarını sisteme bağlayabilmelidir.",
-        "tip": "FR"
-      },
-      {
-        "metin": "Sistem gelen e-postaları analiz ederek anlamlı yanıtlar oluşturmalıdır.",
-        "tip": "FR"
-      },
-      {
-        "metin": "Oluşturulan yanıtlar kullanıcıya gönderim öncesi onay için gösterilmelidir.",
-        "tip": "FR"
-      },
-      {
-        "metin": "Kullanıcı onayı sonrası mail otomatik olarak gönderilmelidir.",
-        "tip": "FR"
-      },
-      {
-        "metin": "Yanıt oluşturma süresi 3 saniyeyi geçmemelidir.",
-        "tip": "NFR"
-      },
-      {
-        "metin": "Sistem kullanıcı e-postalarını ve hassas verileri şifreli şekilde saklamalıdır.",
-        "tip": "NFR"
-      },
-      {
-        "metin": "Oluşturulan yanıtların dil bilgisi doğruluğu %95 ve üzerinde olmalıdır.",
-        "tip": "NFR"
-      }
-    ],
-    "oneriler": [
-      {
-        "tip": "FR - E-posta Kategorizasyonu",
-        "detay": "Sistem, gelen e-postaları konu, içerik ve göndericiye göre otomatik olarak kategoriye ayırabilmeli (örn: 'destek', 'satış', 'geri bildirim', 'spam') ve bu kategorilere göre farklı yanıt şablonları önerebilmelidir."
-      },
-      {
-        "tip": "FR - Yanıtlanmamış E-posta Raporu",
-        "detay": "Kullanıcıya veya yöneticilere, belirli bir süre içinde yanıtlanmamış veya işlem bekleyen e-postaları listeleyen günlük/haftalık bir rapor sunulmalıdır."
-      },
-      {
-        "tip": "FR - Özel Yanıt Şablonları",
-        "detay": "Kullanıcılar, belirli durumlar veya göndericiler için kendi özel yanıt şablonlarını oluşturabilmeli ve sistemin bunları öğrenerek öncelikli olarak önermesini sağlayabilmelidir."
-      },
-      {
-        "tip": "NFR - Kişisel Veri Koruması ve Gizlilik",
-        "detay": "E-posta içerikleri kişisel hassas bilgiler içerebileceğinden, sistemin GDPR/KVKK gibi veri koruma mevzuatlarına tam uyumlu olması ve kullanıcı gizliliğini en üst düzeyde tutması sağlanmalıdır."
-      },
-      {
-        "tip": "NFR - Güvenilirlik",
-        "detay": "Sistemin e-posta hizmet sağlayıcılarıyla entegrasyonu kesintisiz ve güvenilir olmalı, mail gönderiminde veya alımında hata oranları minimize edilmelidir."
-      },
-      {
-        "tip": "FR - Çoklu Dil Desteği (Yanıt)",
-        "detay": "Sistem, gelen e-postanın dilini otomatik olarak algılayabilmeli ve farklı dillerde (örn: Türkçe, İngilizce, Almanca) yanıt oluşturma yeteneğine sahip olmalıdır."
-      },
-      {
-        "tip": "FR - Duygu Analizi",
-        "detay": "Sistem, gelen e-postaların tonunu ve duygusunu (pozitif, negatif, nötr) analiz edebilmeli ve buna uygun yanıt tonları önerebilmelidir."
-      }
-    ],
+    "proje_adi": "AI ile Otomatik Mail Yanıtlama Sistemi",
+    "giris": {
+      "amac": "Bu belge, AI ile Otomatik Mail Yanıtlama Sistemi sistemine ait gereksinimleri tanımlar. Sistem, Kullanıcı gelen e-postalarını sisteme bağlar. Sistem e-postaları analiz eder ve otomatik yanıt önerileri sunar. Kullanıcı onaylarsa gönderilir.",
+      "kapsam": "Proje kapsamında hedeflenen temel işlevler, sistemin destekleyeceği kullanıcı rollerine ve süreçlerine göre şekillendirilmiştir."
+    },
     "kullanici_rolleri": [
       {
         "rol": "E-posta Kullanıcısı (Son Kullanıcı)",
-        "detay": "Gelen e-postalarını sisteme bağlayan, otomatik yanıt önerilerini inceleyen ve onaylayan kişi."
+        "gorevler": [
+          "Gelen e-postalarını sisteme bağlayan, otomatik yanıt önerilerini inceleyen ve onaylayan kişi."
+        ]
       },
       {
         "rol": "Sistem Yöneticisi (Opsiyonel)",
-        "detay": "Sistem entegrasyonlarını, şablonları ve genel performans metriklerini izleyen kişi."
+        "gorevler": [
+          "Sistem entegrasyonlarını, şablonları ve genel performans metriklerini izleyen kişi."
+        ]
       }
     ],
-    "teknik_gereksinimler": [
+    "fonksiyonel_gereksinimler": {
+      "FR-01": "Kullanıcılar e-posta hesaplarını sisteme bağlayabilmelidir.",
+      "FR-02": "Sistem gelen e-postaları analiz ederek anlamlı yanıtlar oluşturmalıdır.",
+      "FR-03": "Oluşturulan yanıtlar kullanıcıya gönderim öncesi onay için gösterilmelidir.",
+      "FR-04": "Kullanıcı onayı sonrası mail otomatik olarak gönderilmelidir.",
+      "FR-05": "Sistem, gelen e-postaları konu, içerik ve göndericiye göre otomatik olarak kategoriye ayırabilmeli (örn: 'destek', 'satış', 'geri bildirim', 'spam') ve bu kategorilere göre farklı yanıt şablonları önerebilmelidir.",
+      "FR-06": "Kullanıcıya veya yöneticilere, belirli bir süre içinde yanıtlanmamış veya işlem bekleyen e-postaları listeleyen günlük/haftalık bir rapor sunulmalıdır.",
+      "FR-07": "Kullanıcılar, belirli durumlar veya göndericiler için kendi özel yanıt şablonlarını oluşturabilmeli ve sistemin bunları öğrenerek öncelikli olarak önermesini sağlayabilmelidir.",
+      "FR-08": "Sistem, gelen e-postanın dilini otomatik olarak algılayabilmeli ve farklı dillerde (örn: Türkçe, İngilizce, Almanca) yanıt oluşturma yeteneğine sahip olmalıdır.",
+      "FR-09": "Sistem, gelen e-postaların tonunu ve duygusunu (pozitif, negatif, nötr) analiz edebilmeli ve buna uygun yanıt tonları önerebilmelidir."
+    },
+    "fonksiyonel_olmayan_gereksinimler": {
+      "NFR-01": "Yanıt oluşturma süresi 3 saniyeyi geçmemelidir.",
+      "NFR-02": "Sistem kullanıcı e-postalarını ve hassas verileri şifreli şekilde saklamalıdır.",
+      "NFR-03": "Oluşturulan yanıtların dil bilgisi doğruluğu %95 ve üzerinde olmalıdır.",
+      "NFR-04": "E-posta içerikleri kişisel hassas bilgiler içerebileceğinden, sistemin GDPR/KVKK gibi veri koruma mevzuatlarına tam uyumlu olması ve kullanıcı gizliliğini en üst düzeyde tutması sağlanmalıdır.",
+      "NFR-05": "Sistemin e-posta hizmet sağlayıcılarıyla entegrasyonu kesintisiz ve güvenilir olmalı, mail gönderiminde veya alımında hata oranları minimize edilmelidir."
+    },
+    "kullanim_senaryolari": [
       {
-        "teknoloji": "E-posta API Entegrasyonu",
-        "detay": "Gmail API, Outlook API gibi e-posta servislerine bağlanmak için."
+        "id": "UC-01",
+        "adimlar": [
+          "Kullanıcının e-posta hesabını sisteme bağladığı ve yetkilendirme yaptığı ekran."
+        ]
       },
       {
-        "teknoloji": "NLP/LLM Modeli",
-        "detay": "E-posta metnini anlamak, konu çıkarmak, duygu analizi yapmak ve yanıtlar oluşturmak için (örn: Gemini, GPT, BERT tabanlı modeller)."
+        "id": "UC-02",
+        "adimlar": [
+          "Gelen e-postaların listelendiği, analiz durumlarının ve önerilen yanıtların gösterildiği ekran."
+        ]
       },
       {
-        "teknoloji": "Veritabanı",
-        "detay": "Kullanıcı ayarları, şablonlar, e-posta analiz geçmişi, yanıtlanmış/yanıtlanmamış e-posta kayıtları için."
+        "id": "UC-03",
+        "adimlar": [
+          "Oluşturulan yanıtın kullanıcıya sunulduğu, düzenleme ve onaylama seçeneklerinin bulunduğu pop-up veya ayrı bir ekran."
+        ]
       },
       {
-        "teknoloji": "Backend Servisleri",
-        "detay": "E-posta çekme, analiz etme, yanıt oluşturma ve gönderme mantığı için."
+        "id": "UC-04",
+        "adimlar": [
+          "Yanıt bekleyen e-postaların listelendiği ve filtrelenebildiği rapor ekranı."
+        ]
       },
       {
-        "teknoloji": "Mesaj Kuyruğu (Opsiyonel)",
-        "detay": "Büyük hacimli e-posta işlemeyi yönetmek ve hatırlatmaları zamanlamak için (örn: RabbitMQ, Kafka)."
-      },
-      {
-        "teknoloji": "Bulut Altyapısı",
-        "detay": "Sistemin ölçeklenebilir ve güvenilir bir şekilde çalışması için (örn: Google Cloud Functions, AWS Lambda)."
+        "id": "UC-05",
+        "adimlar": [
+          "Kullanıcıların özel yanıt şablonları oluşturup yönetebildiği ekran."
+        ]
       }
     ],
-    "arayuz_ekran_bilesenleri": [
-      {
-        "bilesen": "E-posta Bağlantı Ayarları Ekranı",
-        "detay": "Kullanıcının e-posta hesabını sisteme bağladığı ve yetkilendirme yaptığı ekran."
-      },
-      {
-        "bilesen": "Gelen Kutusu/Analiz Sonuçları Ekranı",
-        "detay": "Gelen e-postaların listelendiği, analiz durumlarının ve önerilen yanıtların gösterildiği ekran."
-      },
-      {
-        "bilesen": "Yanıt Onay Ekranı",
-        "detay": "Oluşturulan yanıtın kullanıcıya sunulduğu, düzenleme ve onaylama seçeneklerinin bulunduğu pop-up veya ayrı bir ekran."
-      },
-      {
-        "bilesen": "Yanıtlanmamış E-postalar Raporu",
-        "detay": "Yanıt bekleyen e-postaların listelendiği ve filtrelenebildiği rapor ekranı."
-      },
-      {
-        "bilesen": "Şablon Yönetimi Ekranı",
-        "detay": "Kullanıcıların özel yanıt şablonları oluşturup yönetebildiği ekran."
-      }
-    ],
-    "olasi_risk_ve_sorumluluklar": [
-      {
-        "risk": "Yanlış/Alakasız Yanıt Oluşturma",
-        "sorumluluk": "Sistemin e-postayı yanlış anlayıp uygunsuz veya hatalı yanıtlar önermesi. Müşteri ilişkilerine zarar verme, itibar kaybı."
-      },
-      {
-        "risk": "E-posta Hesabı Güvenliği İhlali",
-        "sorumluluk": "Sisteme bağlanan e-posta hesaplarının yetkisiz erişime uğraması. Hassas veri sızıntısı, KVKK/GDPR ihlalleri, hukuki ve finansal yaptırımlar."
-      },
-      {
-        "risk": "Performans Sorunları (Gecikmeli Yanıt)",
-        "sorumluluk": "Yanıt oluşturma süresinin uzaması, e-postaların gecikmeli gönderilmesi. Müşteri memnuniyetsizliği, operasyonel aksaklıklar."
-      },
-      {
-        "risk": "Yasal Uyumsuzluklar (Veri İşleme)",
-        "sorumluluk": "E-posta içeriklerinin kişisel veri veya ticari sır içermesi durumunda yasal mevzuatlara uyumsuzluk. Para cezaları, hukuki sorumluluklar."
-      },
-      {
-        "risk": "E-posta Sağlayıcı API Kısıtlamaları",
-        "sorumluluk": "E-posta servis sağlayıcılarının API kullanım limitleri veya politikalarındaki değişiklikler. Sistemin işlevselliğinin sekteye uğraması."
-      }
-    ],
-    "mvp_onerisi": {
-      "aciklama": "MVP, kullanıcının tek bir e-posta hesabını bağlayıp, temel e-postalara (örn: 'teşekkür', 'bilgi talebi') otomatik yanıt önerisi alabilmesine ve bunu onaylayıp gönderebilmesine odaklanmalıdır.",
-      "ozellikler": [
-        "Tek e-posta hesabı entegrasyonu (örn: Gmail)",
-        "Gelen e-postaların temel içeriğini anlama",
-        "Basit ve genel yanıt önerileri oluşturma",
-        "Yanıtı kullanıcıya onay için gösterme ve düzenleme",
-        "Onay sonrası otomatik gönderme"
+    "is_kurallari": {
+      "BR-01": "Sistemin e-postayı yanlış anlayıp uygunsuz veya hatalı yanıtlar önermesi. Müşteri ilişkilerine zarar verme, itibar kaybı.",
+      "BR-02": "Sisteme bağlanan e-posta hesaplarının yetkisiz erişime uğraması. Hassas veri sızıntısı, KVKK/GDPR ihlalleri, hukuki ve finansal yaptırımlar.",
+      "BR-03": "Yanıt oluşturma süresinin uzaması, e-postaların gecikmeli gönderilmesi. Müşteri memnuniyetsizliği, operasyonel aksaklıklar.",
+      "BR-04": "E-posta içeriklerinin kişisel veri veya ticari sır içermesi durumunda yasal mevzuatlara uyumsuzluk. Para cezaları, hukuki sorumluluklar.",
+      "BR-05": "E-posta servis sağlayıcılarının API kullanım limitleri veya politikalarındaki değişiklikler. Sistemin işlevselliğinin sekteye uğraması."
+    },
+    "veri_gereksinimleri": {
+      "tahmini_veri_kumesi": [
+        "kullanıcı bilgileri",
+        "sistem logları",
+        "uygulama içeriği",
+        "etkileşim geçmişi"
       ]
+    },
+    "sistem_gereksinimleri": {
+      "E-posta API Entegrasyonu": "Gmail API, Outlook API gibi e-posta servislerine bağlanmak için.",
+      "NLP/LLM Modeli": "E-posta metnini anlamak, konu çıkarmak, duygu analizi yapmak ve yanıtlar oluşturmak için (örn: Gemini, GPT, BERT tabanlı modeller).",
+      "Veritabanı": "Kullanıcı ayarları, şablonlar, e-posta analiz geçmişi, yanıtlanmış/yanıtlanmamış e-posta kayıtları için.",
+      "Backend Servisleri": "E-posta çekme, analiz etme, yanıt oluşturma ve gönderme mantığı için.",
+      "Mesaj Kuyruğu (Opsiyonel)": "Büyük hacimli e-posta işlemeyi yönetmek ve hatırlatmaları zamanlamak için (örn: RabbitMQ, Kafka).",
+      "Bulut Altyapısı": "Sistemin ölçeklenebilir ve güvenilir bir şekilde çalışması için (örn: Google Cloud Functions, AWS Lambda)."
     }
   },
   {
-    "senaryo_adi": "Yapay Zeka ile Ders Notu Oluşturucu",
-    "senaryo_metni": "Öğrenci PDF veya ses dosyası yükler. Sistem özet çıkarır, önemli başlıkları listeler, sınav için not haline getirir.",
-    "gereksinimler": [
-      {
-        "metin": "Kullanıcı PDF veya ses dosyası yükleyebilmelidir.",
-        "tip": "FR"
-      },
-      {
-        "metin": "Sistem yüklenen metni/sesi analiz ederek ana başlıkları ve önemli kavramları çıkarmalıdır.",
-        "tip": "FR"
-      },
-      {
-        "metin": "Sistem, çıkarılan önemli notları sadeleştirerek ve okunabilir bir formatta listelemelidir.",
-        "tip": "FR"
-      },
-      {
-        "metin": "Kullanıcı, oluşturulan notları PDF formatında indirebilmelidir.",
-        "tip": "FR"
-      },
-      {
-        "metin": "Özetleme ve not oluşturma süresi 10 saniyeyi geçmemelidir.",
-        "tip": "NFR"
-      },
-      {
-        "metin": "Oluşturulan notlar, genel okunabilirlik açısından B2 seviyesinde anlaşılır olmalıdır.",
-        "tip": "NFR"
-      },
-      {
-        "metin": "Yüklenen dosyalar ve oluşturulan notlar sistemde 7 gün sonra otomatik olarak silinmelidir.",
-        "tip": "NFR"
-      }
-    ],
-    "oneriler": [
-      {
-        "tip": "FR - Kişiselleştirilmiş Çalışma Planı",
-        "detay": "Sistem, oluşturulan notlara ve kullanıcının öğrenme alışkanlıklarına göre (örn: hangi konularda zayıf olduğu) kişiye özel bir çalışma planı veya önerilen tekrar programı sunabilmelidir."
-      },
-      {
-        "tip": "FR - Flashcard Dönüştürme",
-        "detay": "Oluşturulan notlar, kolay tekrar ve ezberleme için otomatik olarak flashcard (bilgi kartı) formatına dönüştürülebilmelidir."
-      },
-      {
-        "tip": "FR - Çoklu Dil Desteği",
-        "detay": "Sistem, farklı dillerdeki (örn: Türkçe, İngilizce, Almanca) ders materyallerini analiz edebilmeli ve notları bu dillerde oluşturabilmelidir."
-      },
-      {
-        "tip": "NFR - Ses Analizi Doğruluğu",
-        "detay": "Sistemin ses dosyasından metne dönüştürme (Speech-to-Text) ve anlama doğruluğu yüksek olmalıdır (örn: %90+ doğruluk oranı)."
-      },
-      {
-        "tip": "NFR - Veri Gizliliği ve Güvenliği",
-        "detay": "Yüklenen ders materyallerinin ve kişisel verilerin gizliliği ve güvenliği sağlanmalı, üçüncü taraflarla paylaşılmamalıdır."
-      },
-      {
-        "tip": "FR - Sınav Sorusu Oluşturma",
-        "detay": "Oluşturulan notlardan yola çıkarak, sistem otomatik olarak çoktan seçmeli veya açık uçlu sınav soruları üretebilmelidir."
-      },
-      {
-        "tip": "FR - Anlamsal İlişkilendirme",
-        "detay": "Sistem, farklı başlıklar ve notlar arasındaki anlamsal ilişkileri belirleyerek, konuların birbirine nasıl bağlandığını gösteren bir 'kavram haritası' oluşturabilmelidir."
-      }
-    ],
+    "proje_adi": "Yapay Zeka ile Ders Notu Oluşturucu",
+    "giris": {
+      "amac": "Bu belge, Yapay Zeka ile Ders Notu Oluşturucu sistemine ait gereksinimleri tanımlar. Sistem, Öğrenci PDF veya ses dosyası yükler. Sistem özet çıkarır, önemli başlıkları listeler, sınav için not haline getirir.",
+      "kapsam": "Proje kapsamında hedeflenen temel işlevler, sistemin destekleyeceği kullanıcı rollerine ve süreçlerine göre şekillendirilmiştir."
+    },
     "kullanici_rolleri": [
       {
         "rol": "Öğrenci/Kullanıcı",
-        "detay": "Ders materyallerini yükleyen, notları alan ve çalışma planlarını takip eden kişi."
+        "gorevler": [
+          "Ders materyallerini yükleyen, notları alan ve çalışma planlarını takip eden kişi."
+        ]
       },
       {
         "rol": "Eğitmen/Öğretmen (Opsiyonel)",
-        "detay": "Öğrencilerin notlarını gözden geçirebilen, sistemin performansını takip edebilen (eğer çoklu kullanıcı desteklenirse) kişi."
+        "gorevler": [
+          "Öğrencilerin notlarını gözden geçirebilen, sistemin performansını takip edebilen (eğer çoklu kullanıcı desteklenirse) kişi."
+        ]
       }
     ],
-    "teknik_gereksinimler": [
+    "fonksiyonel_gereksinimler": {
+      "FR-01": "Kullanıcı PDF veya ses dosyası yükleyebilmelidir.",
+      "FR-02": "Sistem yüklenen metni/sesi analiz ederek ana başlıkları ve önemli kavramları çıkarmalıdır.",
+      "FR-03": "Sistem, çıkarılan önemli notları sadeleştirerek ve okunabilir bir formatta listelemelidir.",
+      "FR-04": "Kullanıcı, oluşturulan notları PDF formatında indirebilmelidir.",
+      "FR-05": "Sistem, oluşturulan notlara ve kullanıcının öğrenme alışkanlıklarına göre (örn: hangi konularda zayıf olduğu) kişiye özel bir çalışma planı veya önerilen tekrar programı sunabilmelidir.",
+      "FR-06": "Oluşturulan notlar, kolay tekrar ve ezberleme için otomatik olarak flashcard (bilgi kartı) formatına dönüştürülebilmelidir.",
+      "FR-07": "Sistem, farklı dillerdeki (örn: Türkçe, İngilizce, Almanca) ders materyallerini analiz edebilmeli ve notları bu dillerde oluşturabilmelidir.",
+      "FR-08": "Oluşturulan notlardan yola çıkarak, sistem otomatik olarak çoktan seçmeli veya açık uçlu sınav soruları üretebilmelidir.",
+      "FR-09": "Sistem, farklı başlıklar ve notlar arasındaki anlamsal ilişkileri belirleyerek, konuların birbirine nasıl bağlandığını gösteren bir 'kavram haritası' oluşturabilmelidir."
+    },
+    "fonksiyonel_olmayan_gereksinimler": {
+      "NFR-01": "Özetleme ve not oluşturma süresi 10 saniyeyi geçmemelidir.",
+      "NFR-02": "Oluşturulan notlar, genel okunabilirlik açısından B2 seviyesinde anlaşılır olmalıdır.",
+      "NFR-03": "Yüklenen dosyalar ve oluşturulan notlar sistemde 7 gün sonra otomatik olarak silinmelidir.",
+      "NFR-04": "Sistemin ses dosyasından metne dönüştürme (Speech-to-Text) ve anlama doğruluğu yüksek olmalıdır (örn: %90+ doğruluk oranı).",
+      "NFR-05": "Yüklenen ders materyallerinin ve kişisel verilerin gizliliği ve güvenliği sağlanmalı, üçüncü taraflarla paylaşılmamalıdır."
+    },
+    "kullanim_senaryolari": [
       {
-        "teknoloji": "OCR (Optik Karakter Tanıma)",
-        "detay": "PDF belgelerinden metin çıkarmak için."
+        "id": "UC-01",
+        "adimlar": [
+          "Kullanıcının PDF veya ses dosyalarını sürükle-bırak veya seç yöntemiyle yükleyebildiği ekran."
+        ]
       },
       {
-        "teknoloji": "Speech-to-Text (Konuşmadan Metne)",
-        "detay": "Ses dosyalarını metne dönüştürmek için (örn: Google Cloud Speech-to-Text, Whisper API)."
+        "id": "UC-02",
+        "adimlar": [
+          "Oluşturulan özetin, ana başlıkların ve notların görüntülendiği, kullanıcının düzenleyebildiği arayüz."
+        ]
       },
       {
-        "teknoloji": "NLP/LLM Modeli",
-        "detay": "Metin analizi, özetleme, anahtar kavram çıkarma, sınav sorusu oluşturma için (örn: Gemini, GPT, özel eğitilmiş modeller)."
+        "id": "UC-03",
+        "adimlar": [
+          "Notları PDF olarak indirme butonu."
+        ]
       },
       {
-        "teknoloji": "Veritabanı",
-        "detay": "Kullanıcı verileri, not geçmişi, çalışma planları için."
-      },
-      {
-        "teknoloji": "Backend Servisleri",
-        "detay": "Dosya yükleme, işleme, not oluşturma, indirme işlemleri için."
-      },
-      {
-        "teknoloji": "Bulut Depolama",
-        "detay": "Yüklenen dosyaların ve oluşturulan notların geçici depolanması için."
+        "id": "UC-04",
+        "adimlar": [
+          "Kişiselleştirilmiş çalışma planının veya flashcard'ların görüntülendiği arayüz."
+        ]
       }
     ],
-    "arayuz_ekran_bilesenleri": [
-      {
-        "bilesen": "Dosya Yükleme Ekranı",
-        "detay": "Kullanıcının PDF veya ses dosyalarını sürükle-bırak veya seç yöntemiyle yükleyebildiği ekran."
-      },
-      {
-        "bilesen": "Not Görüntüleme/Düzenleme Ekranı",
-        "detay": "Oluşturulan özetin, ana başlıkların ve notların görüntülendiği, kullanıcının düzenleyebildiği arayüz."
-      },
-      {
-        "bilesen": "Not İndirme Butonu",
-        "detay": "Notları PDF olarak indirme butonu."
-      },
-      {
-        "bilesen": "Çalışma Planı/Flashcard Ekranı (Öneriler)",
-        "detay": "Kişiselleştirilmiş çalışma planının veya flashcard'ların görüntülendiği arayüz."
-      }
-    ],
-    "olasi_risk_ve_sorumluluklar": [
-      {
-        "risk": "Yanlış/Eksik Özet Çıkarma",
-        "sorumluluk": "Sistemin ders materyalini yanlış anlaması, önemli bilgileri atlaması veya hatalı özetler üretmesi. Öğrencinin yanlış öğrenmesine veya sınav başarısızlığına yol açma riski."
-      },
-      {
-        "risk": "Ses Tanıma Hataları",
-        "sorumluluk": "Ses dosyalarındaki düşük kaliteli kayıtlar veya aksanlar nedeniyle yanlış metin dönüştürme. Bilginin yanlış özetlenmesi."
-      },
-      {
-        "risk": "Veri Gizliliği İhlali",
-        "sorumluluk": "Yüklenen ders materyallerinin veya kişisel öğrenci verilerinin sızması. KVKK/GDPR uyumsuzluğu, hukuki yaptırımlar."
-      },
-      {
-        "risk": "Performans Sorunları (Uzun Süreç)",
-        "sorumluluk": "Büyük dosyaların işlenmesinin çok uzun sürmesi, kullanıcı deneyiminin olumsuz etkilenmesi."
-      },
-      {
-        "risk": "Telif Hakkı İhlalleri",
-        "sorumluluk": "Yüklenen materyallerin telif hakkı koruması altında olması ve sistemin bu verileri işlemesi. Yasal sorumluluklar."
-      }
-    ],
-    "mvp_onerisi": {
-      "aciklama": "MVP, sadece PDF metin dosyalarından temel özet ve ana başlık çıkarma işlevine odaklanmalıdır.",
-      "ozellikler": [
-        "PDF metin dosyası yükleme",
-        "Yüklenen metinden otomatik özet çıkarma",
-        "Önemli ana başlıkları listeleme",
-        "Oluşturulan notları basit bir metin formatında görüntüleme"
+    "is_kurallari": {
+      "BR-01": "Sistemin ders materyalini yanlış anlaması, önemli bilgileri atlaması veya hatalı özetler üretmesi. Öğrencinin yanlış öğrenmesine veya sınav başarısızlığına yol açma riski.",
+      "BR-02": "Ses dosyalarındaki düşük kaliteli kayıtlar veya aksanlar nedeniyle yanlış metin dönüştürme. Bilginin yanlış özetlenmesi.",
+      "BR-03": "Yüklenen ders materyallerinin veya kişisel öğrenci verilerinin sızması. KVKK/GDPR uyumsuzluğu, hukuki yaptırımlar.",
+      "BR-04": "Büyük dosyaların işlenmesinin çok uzun sürmesi, kullanıcı deneyiminin olumsuz etkilenmesi.",
+      "BR-05": "Yüklenen materyallerin telif hakkı koruması altında olması ve sistemin bu verileri işlemesi. Yasal sorumluluklar."
+    },
+    "veri_gereksinimleri": {
+      "tahmini_veri_kumesi": [
+        "kullanıcı bilgileri",
+        "sistem logları",
+        "uygulama içeriği",
+        "etkileşim geçmişi"
       ]
+    },
+    "sistem_gereksinimleri": {
+      "OCR (Optik Karakter Tanıma)": "PDF belgelerinden metin çıkarmak için.",
+      "Speech-to-Text (Konuşmadan Metne)": "Ses dosyalarını metne dönüştürmek için (örn: Google Cloud Speech-to-Text, Whisper API).",
+      "NLP/LLM Modeli": "Metin analizi, özetleme, anahtar kavram çıkarma, sınav sorusu oluşturma için (örn: Gemini, GPT, özel eğitilmiş modeller).",
+      "Veritabanı": "Kullanıcı verileri, not geçmişi, çalışma planları için.",
+      "Backend Servisleri": "Dosya yükleme, işleme, not oluşturma, indirme işlemleri için.",
+      "Bulut Depolama": "Yüklenen dosyaların ve oluşturulan notların geçici depolanması için."
     }
   },
   {
-    "senaryo_adi": "Sosyal Medya İçerik Planlama ve Zamanlama Aracı",
-    "senaryo_metni": "Küçük işletmeler için bir sosyal medya içerik planlama ve zamanlama aracı yapmak istiyorum. Kullanıcılar içeriklerini oluşturabilecek, görseller ekleyebilecek ve farklı sosyal medya platformlarında (Facebook, Instagram) belirli tarihlerde otomatik yayınlanacak şekilde planlayabilecek.",
-    "gereksinimler": [
-      {
-        "metin": "Kullanıcılar metin tabanlı sosyal medya içeriği oluşturabilmelidir.",
-        "tip": "FR"
-      },
-      {
-        "metin": "Kullanıcılar içeriklerine görsel ekleyebilmelidir.",
-        "tip": "FR"
-      },
-      {
-        "metin": "Kullanıcılar oluşturdukları içerikleri Facebook ve Instagram gibi farklı sosyal medya platformlarına bağlayabilmelidir.",
-        "tip": "FR"
-      },
-      {
-        "metin": "Kullanıcılar içeriklerini belirli bir tarih ve saatte otomatik olarak yayınlanmak üzere planlayabilmelidir.",
-        "tip": "FR"
-      },
-      {
-        "metin": "İçerik planlama arayüzü sezgisel ve kolay kullanılabilir olmalıdır.",
-        "tip": "NFR"
-      },
-      {
-        "metin": "Planlanan içeriklerin yayınlanma süresi doğru olmalıdır (en fazla 1 dakikalık gecikme).",
-        "tip": "NFR"
-      },
-      {
-        "metin": "Kullanıcıların sosyal medya hesap bilgileri şifreli ve güvenli bir şekilde saklanmalıdır.",
-        "tip": "NFR"
-      }
-    ],
-    "oneriler": [
-      {
-        "tip": "FR - İçerik Takvimi Görünümü",
-        "detay": "Kullanıcılar planlanmış tüm içeriklerini bir takvim görünümünde kolayca görebilmeli, sürükle-bırak yöntemiyle düzenleyebilmelidir."
-      },
-      {
-        "tip": "FR - Performans Analizi",
-        "detay": "Yayınlanan içeriklerin performansını (beğeni, yorum, erişim) takip edebilecekleri basit bir analiz paneli sunulmalıdır."
-      },
-      {
-        "tip": "FR - Hashtag Önerileri",
-        "detay": "İçeriğe uygun popüler hashtag'ler otomatik olarak önerilmelidir."
-      },
-      {
-        "tip": "NFR - Platform Entegrasyon Güvenliği",
-        "detay": "Sosyal medya platformları ile entegrasyonlar, o platformların API politikalarına ve güvenlik standartlarına tam uyumlu olmalıdır."
-      },
-      {
-        "tip": "NFR - Yüksek Erişilebilirlik",
-        "detay": "Yoğun kullanım zamanlarında bile sistemin %99.9 oranında kesintisiz hizmet vermesi sağlanmalıdır."
-      }
-    ],
+    "proje_adi": "Sosyal Medya İçerik Planlama ve Zamanlama Aracı",
+    "giris": {
+      "amac": "Bu belge, Sosyal Medya İçerik Planlama ve Zamanlama Aracı sistemine ait gereksinimleri tanımlar. Sistem, Küçük işletmeler için bir sosyal medya içerik planlama ve zamanlama aracı yapmak istiyorum. Kullanıcılar içeriklerini oluşturabilecek, görseller ekleyebilecek ve farklı sosyal medya platformlarında (Facebook, Instagram) belirli tarihlerde otomatik yayınlanacak şekilde planlayabilecek.",
+      "kapsam": "Proje kapsamında hedeflenen temel işlevler, sistemin destekleyeceği kullanıcı rollerine ve süreçlerine göre şekillendirilmiştir."
+    },
     "kullanici_rolleri": [
       {
         "rol": "İşletme Sahibi/Pazarlama Uzmanı",
-        "detay": "Sosyal medya içeriklerini oluşturan, planlayan ve yayınlayan kişi."
+        "gorevler": [
+          "Sosyal medya içeriklerini oluşturan, planlayan ve yayınlayan kişi."
+        ]
       }
     ],
-    "teknik_gereksinimler": [
+    "fonksiyonel_gereksinimler": {
+      "FR-01": "Kullanıcılar metin tabanlı sosyal medya içeriği oluşturabilmelidir.",
+      "FR-02": "Kullanıcılar içeriklerine görsel ekleyebilmelidir.",
+      "FR-03": "Kullanıcılar oluşturdukları içerikleri Facebook ve Instagram gibi farklı sosyal medya platformlarına bağlayabilmelidir.",
+      "FR-04": "Kullanıcılar içeriklerini belirli bir tarih ve saatte otomatik olarak yayınlanmak üzere planlayabilmelidir.",
+      "FR-05": "Kullanıcılar planlanmış tüm içeriklerini bir takvim görünümünde kolayca görebilmeli, sürükle-bırak yöntemiyle düzenleyebilmelidir.",
+      "FR-06": "Yayınlanan içeriklerin performansını (beğeni, yorum, erişim) takip edebilecekleri basit bir analiz paneli sunulmalıdır.",
+      "FR-07": "İçeriğe uygun popüler hashtag'ler otomatik olarak önerilmelidir."
+    },
+    "fonksiyonel_olmayan_gereksinimler": {
+      "NFR-01": "İçerik planlama arayüzü sezgisel ve kolay kullanılabilir olmalıdır.",
+      "NFR-02": "Planlanan içeriklerin yayınlanma süresi doğru olmalıdır (en fazla 1 dakikalık gecikme).",
+      "NFR-03": "Kullanıcıların sosyal medya hesap bilgileri şifreli ve güvenli bir şekilde saklanmalıdır.",
+      "NFR-04": "Sosyal medya platformları ile entegrasyonlar, o platformların API politikalarına ve güvenlik standartlarına tam uyumlu olmalıdır.",
+      "NFR-05": "Yoğun kullanım zamanlarında bile sistemin %99.9 oranında kesintisiz hizmet vermesi sağlanmalıdır."
+    },
+    "kullanim_senaryolari": [
       {
-        "teknoloji": "Veritabanı",
-        "detay": "İçerik, zamanlama, kullanıcı bilgileri ve platform bağlantı ayarları için."
+        "id": "UC-01",
+        "adimlar": [
+          "Kullanıcının metin ve görsel ekleyerek içerik oluşturduğu arayüz."
+        ]
       },
       {
-        "teknoloji": "Backend Servisleri",
-        "detay": "İçerik oluşturma/yönetimi, zamanlama motoru, sosyal medya API entegrasyonları için."
+        "id": "UC-02",
+        "adimlar": [
+          "Kullanıcının sosyal medya hesaplarını bağladığı ekran."
+        ]
       },
       {
-        "teknoloji": "Frontend Uygulama",
-        "detay": "Kullanıcı arayüzü ve içerik düzenleyici için."
+        "id": "UC-03",
+        "adimlar": [
+          "Planlanmış içeriklerin takvim üzerinde görüntülendiği ve zamanlandığı arayüz."
+        ]
       },
       {
-        "teknoloji": "Sosyal Medya API Entegrasyonları",
-        "detay": "Facebook Graph API, Instagram Graph API gibi platformlara içerik göndermek için."
-      },
-      {
-        "teknoloji": "Zamanlama/Planlama Motoru",
-        "detay": "Belirlenen tarihte otomatik yayınlamayı tetiklemek için (örn: Cron tab, Celery Beat)."
-      },
-      {
-        "teknoloji": "Bulut Depolama",
-        "detay": "Yüklenen görseller ve medya dosyaları için."
+        "id": "UC-04",
+        "adimlar": [
+          "Yayınlanan içeriklerin listelendiği ve (eğer entegre edilirse) performans metriklerinin gösterildiği ekran."
+        ]
       }
     ],
-    "arayuz_ekran_bilesenleri": [
-      {
-        "bilesen": "İçerik Oluşturma/Düzenleme Ekranı",
-        "detay": "Kullanıcının metin ve görsel ekleyerek içerik oluşturduğu arayüz."
-      },
-      {
-        "bilesen": "Platform Bağlantı Ayarları Ekranı",
-        "detay": "Kullanıcının sosyal medya hesaplarını bağladığı ekran."
-      },
-      {
-        "bilesen": "İçerik Takvimi/Zamanlama Ekranı",
-        "detay": "Planlanmış içeriklerin takvim üzerinde görüntülendiği ve zamanlandığı arayüz."
-      },
-      {
-        "bilesen": "Yayınlanmış İçerikler Ekranı",
-        "detay": "Yayınlanan içeriklerin listelendiği ve (eğer entegre edilirse) performans metriklerinin gösterildiği ekran."
-      }
-    ],
-    "olasi_risk_ve_sorumluluklar": [
-      {
-        "risk": "Sosyal Medya API Değişiklikleri",
-        "sorumluluk": "Platformların API politikalarını veya teknik yapılarını değiştirmesi, entegrasyonun bozulması. Sistemin işlevselliğinin aksaması, geliştirme maliyetleri."
-      },
-      {
-        "risk": "İçerik Yayınlama Hataları",
-        "sorumluluk": "Planlanan içeriğin doğru zamanda veya doğru platformda yayınlanmaması. Pazarlama kampanyalarının aksaması, marka itibarının zedelenmesi."
-      },
-      {
-        "risk": "Hesap Güvenliği İhlali",
-        "sorumluluk": "Kullanıcıların sosyal medya hesaplarının ele geçirilmesi veya yetkisiz içerik yayınlanması. Büyük itibar kaybı, hukuki sorumluluklar."
-      },
-      {
-        "risk": "Veri Gizliliği İhlali",
-        "sorumluluk": "Kullanıcı verilerinin veya içerik taslaklarının sızması. KVKK/GDPR uyumsuzluğu, yasal yaptırımlar."
-      },
-      {
-        "risk": "Yasal/Etik Olmayan İçerik Yayınlama",
-        "sorumluluk": "Kullanıcıların platform kurallarına veya yasalara aykırı içerik yayınlaması (sistem bu konuda filtreleme yapmıyorsa). Yasal yaptırımlar, platform tarafından engellenme."
-      }
-    ],
-    "mvp_onerisi": {
-      "aciklama": "MVP, kullanıcıların temel metin ve görsel içerikleri oluşturup tek bir sosyal medya platformunda (örn: Facebook) belirli bir zamanda manuel olarak planlayabilmelerine odaklanmalıdır.",
-      "ozellikler": [
-        "Temel metin içerik oluşturma",
-        "Tek görsel ekleme",
-        "Tek sosyal medya platformuna (örn: Facebook) bağlantı",
-        "Belirli bir tarih/saat için manuel zamanlama",
-        "Planlanmış içerikleri listeleme"
+    "is_kurallari": {
+      "BR-01": "Platformların API politikalarını veya teknik yapılarını değiştirmesi, entegrasyonun bozulması. Sistemin işlevselliğinin aksaması, geliştirme maliyetleri.",
+      "BR-02": "Planlanan içeriğin doğru zamanda veya doğru platformda yayınlanmaması. Pazarlama kampanyalarının aksaması, marka itibarının zedelenmesi.",
+      "BR-03": "Kullanıcıların sosyal medya hesaplarının ele geçirilmesi veya yetkisiz içerik yayınlanması. Büyük itibar kaybı, hukuki sorumluluklar.",
+      "BR-04": "Kullanıcı verilerinin veya içerik taslaklarının sızması. KVKK/GDPR uyumsuzluğu, yasal yaptırımlar.",
+      "BR-05": "Kullanıcıların platform kurallarına veya yasalara aykırı içerik yayınlaması (sistem bu konuda filtreleme yapmıyorsa). Yasal yaptırımlar, platform tarafından engellenme."
+    },
+    "veri_gereksinimleri": {
+      "tahmini_veri_kumesi": [
+        "kullanıcı bilgileri",
+        "sistem logları",
+        "uygulama içeriği",
+        "etkileşim geçmişi"
       ]
+    },
+    "sistem_gereksinimleri": {
+      "Veritabanı": "İçerik, zamanlama, kullanıcı bilgileri ve platform bağlantı ayarları için.",
+      "Backend Servisleri": "İçerik oluşturma/yönetimi, zamanlama motoru, sosyal medya API entegrasyonları için.",
+      "Frontend Uygulama": "Kullanıcı arayüzü ve içerik düzenleyici için.",
+      "Sosyal Medya API Entegrasyonları": "Facebook Graph API, Instagram Graph API gibi platformlara içerik göndermek için.",
+      "Zamanlama/Planlama Motoru": "Belirlenen tarihte otomatik yayınlamayı tetiklemek için (örn: Cron tab, Celery Beat).",
+      "Bulut Depolama": "Yüklenen görseller ve medya dosyaları için."
     }
   },
   {
-    "senaryo_adi": "Akıllı Bütçeleme ve Harcama Takip Uygulaması",
-    "senaryo_metni": "Kişisel finans yönetimi için akıllı bir mobil uygulama yapmak istiyorum. Kullanıcılar gelir ve giderlerini kaydedebilecek, harcamalarını kategoriye göre analiz edebilecek. Uygulama, geçmiş harcamalarına göre kişiye özel bütçe önerileri sunacak.",
-    "gereksinimler": [
-      {
-        "metin": "Kullanıcılar gelir ve giderlerini manuel olarak kaydedebilmelidir.",
-        "tip": "FR"
-      },
-      {
-        "metin": "Kullanıcılar harcamalarını (yemek, ulaşım, eğlence vb.) farklı kategorilere ayırabilmelidir.",
-        "tip": "FR"
-      },
-      {
-        "metin": "Uygulama, kullanıcının harcamalarını kategori bazında görsel raporlar (grafikler) halinde sunmalıdır.",
-        "tip": "FR"
-      },
-      {
-        "metin": "Uygulama, kullanıcının geçmiş harcamalarına göre kişiye özel aylık bütçe önerileri sunmalıdır.",
-        "tip": "FR"
-      },
-      {
-        "metin": "Uygulama, veri girişi sırasında hızlı ve duyarlı olmalıdır (anında güncelleme).",
-        "tip": "NFR"
-      },
-      {
-        "metin": "Kullanıcıların finansal verileri (gelir, giderler, bütçe) güçlü şifreleme yöntemleriyle korunmalıdır.",
-        "tip": "NFR"
-      },
-      {
-        "metin": "Mobil uygulama, hem iOS hem de Android işletim sistemlerinde sorunsuz çalışmalıdır.",
-        "tip": "NFR"
-      }
-    ],
-    "oneriler": [
-      {
-        "tip": "FR - Banka Entegrasyonu",
-        "detay": "Kullanıcılar banka hesaplarını veya kredi kartlarını uygulamaya bağlayarak harcamalarını otomatik olarak içe aktarabilmelidir."
-      },
-      {
-        "tip": "FR - Fatura Hatırlatıcıları",
-        "detay": "Kullanıcıların fatura ödeme tarihlerini kaydedebilmesi ve yaklaşan faturalar için hatırlatıcı bildirimler alabilmesi sağlanmalıdır."
-      },
-      {
-        "tip": "FR - Hedef Belirleme ve Takibi",
-        "detay": "Kullanıcılar tasarruf hedefleri (örn: yeni telefon, tatil) belirleyebilmeli ve bu hedeflere ne kadar yaklaştıklarını takip edebilmelidir."
-      },
-      {
-        "tip": "NFR - Veri Senkronizasyonu",
-        "detay": "Kullanıcı verileri, farklı cihazlar arasında (telefon, tablet) sorunsuz ve güvenli bir şekilde senkronize olmalıdır."
-      },
-      {
-        "tip": "NFR - Kullanılabilirlik (Erişilebilirlik)",
-        "detay": "Uygulama, görme engelliler veya farklı engelleri olan kullanıcılar için erişilebilirlik standartlarına uygun olmalıdır."
-      },
-      {
-        "tip": "FR - Anomali Tespiti",
-        "detay": "Sistem, kullanıcının alışılmadık veya şüpheli harcama paternlerini tespit ederek uyarı verebilmelidir."
-      }
-    ],
+    "proje_adi": "Akıllı Bütçeleme ve Harcama Takip Uygulaması",
+    "giris": {
+      "amac": "Bu belge, Akıllı Bütçeleme ve Harcama Takip Uygulaması sistemine ait gereksinimleri tanımlar. Sistem, Kişisel finans yönetimi için akıllı bir mobil uygulama yapmak istiyorum. Kullanıcılar gelir ve giderlerini kaydedebilecek, harcamalarını kategoriye göre analiz edebilecek. Uygulama, geçmiş harcamalarına göre kişiye özel bütçe önerileri sunacak.",
+      "kapsam": "Proje kapsamında hedeflenen temel işlevler, sistemin destekleyeceği kullanıcı rollerine ve süreçlerine göre şekillendirilmiştir."
+    },
     "kullanici_rolleri": [
       {
         "rol": "Son Kullanıcı (Birey)",
-        "detay": "Gelir/giderlerini kaydeden, harcamalarını takip eden ve bütçe önerileri alan kişi."
+        "gorevler": [
+          "Gelir/giderlerini kaydeden, harcamalarını takip eden ve bütçe önerileri alan kişi."
+        ]
       }
     ],
-    "teknik_gereksinimler": [
+    "fonksiyonel_gereksinimler": {
+      "FR-01": "Kullanıcılar gelir ve giderlerini manuel olarak kaydedebilmelidir.",
+      "FR-02": "Kullanıcılar harcamalarını (yemek, ulaşım, eğlence vb.) farklı kategorilere ayırabilmelidir.",
+      "FR-03": "Uygulama, kullanıcının harcamalarını kategori bazında görsel raporlar (grafikler) halinde sunmalıdır.",
+      "FR-04": "Uygulama, kullanıcının geçmiş harcamalarına göre kişiye özel aylık bütçe önerileri sunmalıdır.",
+      "FR-05": "Kullanıcılar banka hesaplarını veya kredi kartlarını uygulamaya bağlayarak harcamalarını otomatik olarak içe aktarabilmelidir.",
+      "FR-06": "Kullanıcıların fatura ödeme tarihlerini kaydedebilmesi ve yaklaşan faturalar için hatırlatıcı bildirimler alabilmesi sağlanmalıdır.",
+      "FR-07": "Kullanıcılar tasarruf hedefleri (örn: yeni telefon, tatil) belirleyebilmeli ve bu hedeflere ne kadar yaklaştıklarını takip edebilmelidir.",
+      "FR-08": "Sistem, kullanıcının alışılmadık veya şüpheli harcama paternlerini tespit ederek uyarı verebilmelidir."
+    },
+    "fonksiyonel_olmayan_gereksinimler": {
+      "NFR-01": "Uygulama, veri girişi sırasında hızlı ve duyarlı olmalıdır (anında güncelleme).",
+      "NFR-02": "Kullanıcıların finansal verileri (gelir, giderler, bütçe) güçlü şifreleme yöntemleriyle korunmalıdır.",
+      "NFR-03": "Mobil uygulama, hem iOS hem de Android işletim sistemlerinde sorunsuz çalışmalıdır.",
+      "NFR-04": "Kullanıcı verileri, farklı cihazlar arasında (telefon, tablet) sorunsuz ve güvenli bir şekilde senkronize olmalıdır.",
+      "NFR-05": "Uygulama, görme engelliler veya farklı engelleri olan kullanıcılar için erişilebilirlik standartlarına uygun olmalıdır."
+    },
+    "kullanim_senaryolari": [
       {
-        "teknoloji": "Mobil Geliştirme Framework'ü",
-        "detay": "Uygulamanın iOS ve Android platformlarında çalışması için (örn: React Native, Flutter, Swift/Kotlin)."
+        "id": "UC-01",
+        "adimlar": [
+          "Kullanıcının gelir ve giderlerini kategori seçerek girdiği ekran."
+        ]
       },
       {
-        "teknoloji": "Veritabanı",
-        "detay": "Kullanıcı finansal verileri, kategoriler, bütçe bilgileri için (örn: SQLite (yerel), PostgreSQL/MongoDB (bulut))."
+        "id": "UC-02",
+        "adimlar": [
+          "Harcamaların kategori bazında grafiklerle gösterildiği ve özetlendiği ekran."
+        ]
       },
       {
-        "teknoloji": "Backend Servisleri",
-        "detay": "Veri senkronizasyonu, bütçe önerileri algoritması, raporlama için (eğer bulut tabanlıysa)."
+        "id": "UC-03",
+        "adimlar": [
+          "Sistemin kullanıcıya sunduğu kişiye özel bütçe önerilerinin görüntülendiği ekran."
+        ]
       },
       {
-        "teknoloji": "Makine Öğrenmesi Modeli",
-        "detay": "Geçmiş harcamalara göre bütçe önerileri ve anomali tespiti için."
+        "id": "UC-04",
+        "adimlar": [
+          "Kullanıcının tasarruf hedefleri belirleyip ilerlemesini takip ettiği ekran."
+        ]
       },
       {
-        "teknoloji": "Banka/Finansal Entegrasyon API'ları (Opsiyonel)",
-        "detay": "Otomatik veri içe aktarımı için (örn: Plaid, Salt Edge)."
-      },
-      {
-        "teknoloji": "Veri Görselleştirme Kütüphaneleri",
-        "detay": "Harcama raporları için grafikler oluşturmak üzere (örn: Recharts, D3.js)."
+        "id": "UC-05",
+        "adimlar": [
+          "Kullanıcının harcama kategorilerini ekleyip düzenleyebildiği ekran."
+        ]
       }
     ],
-    "arayuz_ekran_bilesenleri": [
-      {
-        "bilesen": "Gelir/Gider Giriş Ekranı",
-        "detay": "Kullanıcının gelir ve giderlerini kategori seçerek girdiği ekran."
-      },
-      {
-        "bilesen": "Harcama Özeti/Rapor Ekranı",
-        "detay": "Harcamaların kategori bazında grafiklerle gösterildiği ve özetlendiği ekran."
-      },
-      {
-        "bilesen": "Bütçe Önerileri Ekranı",
-        "detay": "Sistemin kullanıcıya sunduğu kişiye özel bütçe önerilerinin görüntülendiği ekran."
-      },
-      {
-        "bilesen": "Hedef Belirleme/Takip Ekranı",
-        "detay": "Kullanıcının tasarruf hedefleri belirleyip ilerlemesini takip ettiği ekran."
-      },
-      {
-        "bilesen": "Kategoriler Yönetimi",
-        "detay": "Kullanıcının harcama kategorilerini ekleyip düzenleyebildiği ekran."
-      }
-    ],
-    "olasi_risk_ve_sorumluluklar": [
-      {
-        "risk": "Finansal Veri Güvenliği İhlali",
-        "sorumluluk": "Kullanıcıların gelir, gider, banka bilgileri gibi hassas finansal verilerinin sızması. Büyük hukuki ve finansal sorumluluklar, itibar kaybı."
-      },
-      {
-        "risk": "Yanlış Bütçe Önerileri",
-        "sorumluluk": "Sistemin hatalı veya kullanıcıya uymayan bütçe önerileri sunması. Kullanıcının yanlış finansal kararlar almasına neden olma riski."
-      },
-      {
-        "risk": "Banka Entegrasyon Sorunları",
-        "sorumluluk": "Otomatik veri çekme entegrasyonlarında yaşanabilecek kesintiler veya hatalar. Kullanıcı memnuniyetsizliği, veri tutarsızlığı."
-      },
-      {
-        "risk": "Uygulama Çökmesi/Performans Sorunları",
-        "sorumluluk": "Özellikle mobil platformlarda uygulama çökmesi veya yavaş çalışması. Kullanıcı kaybı, olumsuz yorumlar."
-      },
-      {
-        "risk": "Yasal Uyumsuzluklar (Finansal Veri)",
-        "sorumluluk": "Finansal veri işleme ve depolama ile ilgili yasal düzenlemelere (örn: PCI DSS) uyumsuzluk. Para cezaları, lisans iptali."
-      }
-    ],
-    "mvp_onerisi": {
-      "aciklama": "MVP, kullanıcıların temel gelir/gider kaydı yapabilmesi ve harcamalarını kategori bazında listeleyebilmesine odaklanmalıdır.",
-      "ozellikler": [
-        "Gelir/gider manuel kayıt",
-        "Temel harcama kategorizasyonu",
-        "Kategori bazında harcama listeleme",
-        "Toplam gelir/gider gösterimi"
+    "is_kurallari": {
+      "BR-01": "Kullanıcıların gelir, gider, banka bilgileri gibi hassas finansal verilerinin sızması. Büyük hukuki ve finansal sorumluluklar, itibar kaybı.",
+      "BR-02": "Sistemin hatalı veya kullanıcıya uymayan bütçe önerileri sunması. Kullanıcının yanlış finansal kararlar almasına neden olma riski.",
+      "BR-03": "Otomatik veri çekme entegrasyonlarında yaşanabilecek kesintiler veya hatalar. Kullanıcı memnuniyetsizliği, veri tutarsızlığı.",
+      "BR-04": "Özellikle mobil platformlarda uygulama çökmesi veya yavaş çalışması. Kullanıcı kaybı, olumsuz yorumlar.",
+      "BR-05": "Finansal veri işleme ve depolama ile ilgili yasal düzenlemelere (örn: PCI DSS) uyumsuzluk. Para cezaları, lisans iptali."
+    },
+    "veri_gereksinimleri": {
+      "tahmini_veri_kumesi": [
+        "kullanıcı bilgileri",
+        "sistem logları",
+        "uygulama içeriği",
+        "etkileşim geçmişi"
       ]
+    },
+    "sistem_gereksinimleri": {
+      "Mobil Geliştirme Framework'ü": "Uygulamanın iOS ve Android platformlarında çalışması için (örn: React Native, Flutter, Swift/Kotlin).",
+      "Veritabanı": "Kullanıcı finansal verileri, kategoriler, bütçe bilgileri için (örn: SQLite (yerel), PostgreSQL/MongoDB (bulut)).",
+      "Backend Servisleri": "Veri senkronizasyonu, bütçe önerileri algoritması, raporlama için (eğer bulut tabanlıysa).",
+      "Makine Öğrenmesi Modeli": "Geçmiş harcamalara göre bütçe önerileri ve anomali tespiti için.",
+      "Banka/Finansal Entegrasyon API'ları (Opsiyonel)": "Otomatik veri içe aktarımı için (örn: Plaid, Salt Edge).",
+      "Veri Görselleştirme Kütüphaneleri": "Harcama raporları için grafikler oluşturmak üzere (örn: Recharts, D3.js)."
     }
   },
   {
-    "senaryo_adi": "Akıllı Müşteri Hizmetleri Sohbet Robotu",
-    "senaryo_metni": "Müşteri hizmetleri operasyonlarını kolaylaştırmak için akıllı bir sohbet robotu geliştirmek istiyorum. Müşteriler sıkça sorulan sorulara anında yanıt alabilmeli, karmaşık sorunlar için ise canlı destek temsilcisine yönlendirilebilmelidir. Sohbet robotu, müşteri taleplerinin türünü otomatik olarak algılamalıdır.",
-    "gereksinimler": [
-      {
-        "metin": "Müşteriler sohbet robotu arayüzü üzerinden soru sorabilmelidir.",
-        "tip": "FR"
-      },
-      {
-        "metin": "Sohbet robotu, sıkça sorulan soruların (SSS) yanıtlarını veri tabanından anında sağlayabilmelidir.",
-        "tip": "FR"
-      },
-      {
-        "metin": "Sohbet robotu, müşteri talebinin karmaşıklığını ve türünü otomatik olarak algılayabilmelidir.",
-        "tip": "FR"
-      },
-      {
-        "metin": "Karmaşık veya çözülemeyen talepler için müşteriler canlı destek temsilcisine yönlendirilebilmelidir.",
-        "tip": "FR"
-      },
-      {
-        "metin": "Sohbet robotunun yanıt süresi 2 saniyeyi geçmemelidir.",
-        "tip": "NFR"
-      },
-      {
-        "metin": "Sohbet robotu yanıtlarının doğruluğu %90'ın üzerinde olmalıdır.",
-        "tip": "NFR"
-      },
-      {
-        "metin": "Sistem 7/24 kesintisiz hizmet verebilmelidir.",
-        "tip": "NFR"
-      },
-      {
-        "metin": "Müşteri görüşme verileri gizlilik politikalarına uygun şekilde, şifrelenmiş olarak saklanmalıdır.",
-        "tip": "NFR"
-      }
-    ],
-    "oneriler": [
-      {
-        "tip": "FR - Duygu Analizi",
-        "detay": "Sohbet robotu, müşterinin mesajındaki duygu durumunu (örn: sinirli, memnun, şaşkın) algılayabilmeli ve buna göre yanıt tonunu ayarlayabilmelidir."
-      },
-      {
-        "tip": "FR - Kişiselleştirilmiş Yanıtlar",
-        "detay": "Eğer müşteri giriş yapmış veya bilgileri sistemde kayıtlı ise, sohbet robotu kişiye özel (örn: sipariş geçmişi, abonelik durumu) yanıtlar sunabilmelidir."
-      },
-      {
-        "tip": "FR - Çoklu Kanal Desteği",
-        "detay": "Sohbet robotu sadece web sitesinde değil, aynı zamanda mobil uygulama veya mesajlaşma platformları (WhatsApp, Messenger) üzerinden de erişilebilir olmalıdır."
-      },
-      {
-        "tip": "NFR - Ölçeklenebilirlik",
-        "detay": "Sistem, aynı anda binlerce müşteri talebini eş zamanlı olarak işleyebilecek şekilde ölçeklenebilir bir mimariye sahip olmalıdır."
-      },
-      {
-        "tip": "NFR - Dil Desteği",
-        "detay": "Sohbet robotu, Türkçe dışında İngilizce ve diğer yaygın dillerde de hizmet verebilmelidir."
-      },
-      {
-        "tip": "FR - Geri Bildirim Mekanizması",
-        "detay": "Müşteriler, sohbet robotunun yanıtları hakkında (faydalı mıydı, değil miydi?) geri bildirim sağlayabilmeli, bu geri bildirimler sistemin öğrenmesi için kullanılabilmelidir."
-      }
-    ],
+    "proje_adi": "Akıllı Müşteri Hizmetleri Sohbet Robotu",
+    "giris": {
+      "amac": "Bu belge, Akıllı Müşteri Hizmetleri Sohbet Robotu sistemine ait gereksinimleri tanımlar. Sistem, Müşteri hizmetleri operasyonlarını kolaylaştırmak için akıllı bir sohbet robotu geliştirmek istiyorum. Müşteriler sıkça sorulan sorulara anında yanıt alabilmeli, karmaşık sorunlar için ise canlı destek temsilcisine yönlendirilebilmelidir. Sohbet robotu, müşteri taleplerinin türünü otomatik olarak algılamalıdır.",
+      "kapsam": "Proje kapsamında hedeflenen temel işlevler, sistemin destekleyeceği kullanıcı rollerine ve süreçlerine göre şekillendirilmiştir."
+    },
     "kullanici_rolleri": [
       {
         "rol": "Müşteri/Son Kullanıcı",
-        "detay": "Sohbet robotu ile etkileşime geçen, sorularını soran ve yanıtlar alan kişi."
+        "gorevler": [
+          "Sohbet robotu ile etkileşime geçen, sorularını soran ve yanıtlar alan kişi."
+        ]
       },
       {
         "rol": "Canlı Destek Temsilcisi",
-        "detay": "Sohbet robotunun yönlendirdiği karmaşık sorunları ele alan ve müşterilerle doğrudan iletişim kuran kişi."
+        "gorevler": [
+          "Sohbet robotunun yönlendirdiği karmaşık sorunları ele alan ve müşterilerle doğrudan iletişim kuran kişi."
+        ]
       },
       {
         "rol": "Sistem Yöneticisi/Eğitmen",
-        "detay": "Sohbet robotunun SSS veri tabanını güncelleyen, performansını izleyen ve modelin eğitilmesine katkıda bulunan kişi."
+        "gorevler": [
+          "Sohbet robotunun SSS veri tabanını güncelleyen, performansını izleyen ve modelin eğitilmesine katkıda bulunan kişi."
+        ]
       }
     ],
-    "teknik_gereksinimler": [
+    "fonksiyonel_gereksinimler": {
+      "FR-01": "Müşteriler sohbet robotu arayüzü üzerinden soru sorabilmelidir.",
+      "FR-02": "Sohbet robotu, sıkça sorulan soruların (SSS) yanıtlarını veri tabanından anında sağlayabilmelidir.",
+      "FR-03": "Sohbet robotu, müşteri talebinin karmaşıklığını ve türünü otomatik olarak algılayabilmelidir.",
+      "FR-04": "Karmaşık veya çözülemeyen talepler için müşteriler canlı destek temsilcisine yönlendirilebilmelidir.",
+      "FR-05": "Sohbet robotu, müşterinin mesajındaki duygu durumunu (örn: sinirli, memnun, şaşkın) algılayabilmeli ve buna göre yanıt tonunu ayarlayabilmelidir.",
+      "FR-06": "Eğer müşteri giriş yapmış veya bilgileri sistemde kayıtlı ise, sohbet robotu kişiye özel (örn: sipariş geçmişi, abonelik durumu) yanıtlar sunabilmelidir.",
+      "FR-07": "Sohbet robotu sadece web sitesinde değil, aynı zamanda mobil uygulama veya mesajlaşma platformları (WhatsApp, Messenger) üzerinden de erişilebilir olmalıdır.",
+      "FR-08": "Müşteriler, sohbet robotunun yanıtları hakkında (faydalı mıydı, değil miydi?) geri bildirim sağlayabilmeli, bu geri bildirimler sistemin öğrenmesi için kullanılabilmelidir."
+    },
+    "fonksiyonel_olmayan_gereksinimler": {
+      "NFR-01": "Sohbet robotunun yanıt süresi 2 saniyeyi geçmemelidir.",
+      "NFR-02": "Sohbet robotu yanıtlarının doğruluğu %90'ın üzerinde olmalıdır.",
+      "NFR-03": "Sistem 7/24 kesintisiz hizmet verebilmelidir.",
+      "NFR-04": "Müşteri görüşme verileri gizlilik politikalarına uygun şekilde, şifrelenmiş olarak saklanmalıdır.",
+      "NFR-05": "Sistem, aynı anda binlerce müşteri talebini eş zamanlı olarak işleyebilecek şekilde ölçeklenebilir bir mimariye sahip olmalıdır.",
+      "NFR-06": "Sohbet robotu, Türkçe dışında İngilizce ve diğer yaygın dillerde de hizmet verebilmelidir."
+    },
+    "kullanim_senaryolari": [
       {
-        "teknoloji": "NLP/NLU (Doğal Dil İşleme/Anlama) Modeli",
-        "detay": "Müşteri taleplerini anlamak, niyetleri algılamak, duygu analizi yapmak ve uygun yanıtları üretmek için (örn: Gemini, Dialogflow, Rasa)."
+        "id": "UC-01",
+        "adimlar": [
+          "Web sitesinde veya uygulamada müşterinin sohbet robotuyla etkileşime girdiği arayüz."
+        ]
       },
       {
-        "teknoloji": "SSS (Sıkça Sorulan Sorular) Veritabanı",
-        "detay": "Önceden tanımlanmış sorular ve yanıtları saklamak için (örn: PostgreSQL, Firestore)."
+        "id": "UC-02",
+        "adimlar": [
+          "Sohbet robotunun otomatik olarak önerdiği seçenekler veya butonsal yanıtlar."
+        ]
       },
       {
-        "teknoloji": "Canlı Destek Entegrasyonu",
-        "detay": "Müşterileri canlı temsilcilere yönlendirmek için (örn: Zendesk, Intercom API'leri)."
+        "id": "UC-03",
+        "adimlar": [
+          "Müşterinin canlı destek temsilcisine yönlendirildiğini bildiren mesaj."
+        ]
       },
       {
-        "teknoloji": "Backend Servisleri",
-        "detay": "Sohbet mantığı, API etkileşimleri, veri akışı yönetimi için (örn: Python/Flask, Node.js/Express)."
+        "id": "UC-04",
+        "adimlar": [
+          "Müşterinin önceki sohbetlerini görebildiği bölüm."
+        ]
       },
       {
-        "teknoloji": "Mesajlaşma Platformu Entegrasyonu (Opsiyonel)",
-        "detay": "WhatsApp, Messenger gibi platformlarda çalışabilmek için (ilgili platformların API'leri)."
-      },
-      {
-        "teknoloji": "Bulut Altyapısı",
-        "detay": "Yüksek kullanılabilirlik ve ölçeklenebilirlik için (örn: Google Cloud Run, AWS Lambda)."
+        "id": "UC-05",
+        "adimlar": [
+          "Sohbetin sonunda veya belirli aralıklarla kullanıcının botun yanıtları hakkında geri bildirim verebildiği form."
+        ]
       }
     ],
-    "arayuz_ekran_bilesenleri": [
-      {
-        "bilesen": "Sohbet Penceresi/Widget",
-        "detay": "Web sitesinde veya uygulamada müşterinin sohbet robotuyla etkileşime girdiği arayüz."
-      },
-      {
-        "bilesen": "Yanıt Seçenekleri/Hızlı Yanıtlar",
-        "detay": "Sohbet robotunun otomatik olarak önerdiği seçenekler veya butonsal yanıtlar."
-      },
-      {
-        "bilesen": "Canlı Destek Yönlendirme Bildirimi",
-        "detay": "Müşterinin canlı destek temsilcisine yönlendirildiğini bildiren mesaj."
-      },
-      {
-        "bilesen": "Sohbet Geçmişi",
-        "detay": "Müşterinin önceki sohbetlerini görebildiği bölüm."
-      },
-      {
-        "bilesen": "Geri Bildirim Formu (Yanıt Kalitesi)",
-        "detay": "Sohbetin sonunda veya belirli aralıklarla kullanıcının botun yanıtları hakkında geri bildirim verebildiği form."
-      }
-    ],
-    "olasi_risk_ve_sorumluluklar": [
-      {
-        "risk": "Yanlış/Hatalı Bilgi Sağlama",
-        "sorumluluk": "Sohbet robotunun müşteri sorularına yanlış veya yanıltıcı bilgi vermesi. Müşteri memnuniyetsizliği, hukuki sorunlar, finansal kayıplar (eğer yanlış bilgiye dayanarak işlem yapılırsa)."
-      },
-      {
-        "risk": "Veri Gizliliği ve Güvenliği İhlali",
-        "sorumluluk": "Müşteri sohbetlerinin veya kişisel bilgilerinin sızması. KVKK/GDPR uyumsuzluğu, hukuki yaptırımlar, büyük itibar kaybı."
-      },
-      {
-        "risk": "Düşük Yanıt Doğruluğu/Anlama Yeteneği",
-        "sorumluluk": "Sohbet robotunun müşteri niyetini anlayamaması veya alakasız yanıtlar vermesi. Kullanıcı sinir, canlı destek yükünün artması, uygulamanın terk edilmesi."
-      },
-      {
-        "risk": "Sistem Kesintisi/Performans Sorunları",
-        "sorumluluk": "Sohbet robotunun yavaşlaması veya erişilemez hale gelmesi. Müşteri hizmetlerinde aksaklıklar, satış kaybı."
-      },
-      {
-        "risk": "Kişisel Verilerin Uygunsuz İşlenmesi",
-        "sorumluluk": "Müşteri sohbetlerinde geçen hassas kişisel verilerin (sağlık, finans vb.) yasalara uygun olmadan işlenmesi/saklanması. Yasal yaptırımlar, büyük para cezaları."
-      }
-    ],
-    "mvp_onerisi": {
-      "aciklama": "MVP, sıkça sorulan temel sorulara otomatik yanıt verebilen ve gerektiğinde canlı destek temsilcisine yönlendirebilen bir sohbet robotuna odaklanmalıdır.",
-      "ozellikler": [
-        "Temel SSS veritabanından yanıt verme",
-        "Müşteri talebini canlı destek temsilcisine aktarma",
-        "Sohbet arayüzü (tek kanal, örn: web sitesi)",
-        "Basit konuşma akışı yönetimi"
+    "is_kurallari": {
+      "BR-01": "Sohbet robotunun müşteri sorularına yanlış veya yanıltıcı bilgi vermesi. Müşteri memnuniyetsizliği, hukuki sorunlar, finansal kayıplar (eğer yanlış bilgiye dayanarak işlem yapılırsa).",
+      "BR-02": "Müşteri sohbetlerinin veya kişisel bilgilerinin sızması. KVKK/GDPR uyumsuzluğu, hukuki yaptırımlar, büyük itibar kaybı.",
+      "BR-03": "Sohbet robotunun müşteri niyetini anlayamaması veya alakasız yanıtlar vermesi. Kullanıcı sinir, canlı destek yükünün artması, uygulamanın terk edilmesi.",
+      "BR-04": "Sohbet robotunun yavaşlaması veya erişilemez hale gelmesi. Müşteri hizmetlerinde aksaklıklar, satış kaybı.",
+      "BR-05": "Müşteri sohbetlerinde geçen hassas kişisel verilerin (sağlık, finans vb.) yasalara uygun olmadan işlenmesi/saklanması. Yasal yaptırımlar, büyük para cezaları."
+    },
+    "veri_gereksinimleri": {
+      "tahmini_veri_kumesi": [
+        "kullanıcı bilgileri",
+        "sistem logları",
+        "uygulama içeriği",
+        "etkileşim geçmişi"
       ]
+    },
+    "sistem_gereksinimleri": {
+      "NLP/NLU (Doğal Dil İşleme/Anlama) Modeli": "Müşteri taleplerini anlamak, niyetleri algılamak, duygu analizi yapmak ve uygun yanıtları üretmek için (örn: Gemini, Dialogflow, Rasa).",
+      "SSS (Sıkça Sorulan Sorular) Veritabanı": "Önceden tanımlanmış sorular ve yanıtları saklamak için (örn: PostgreSQL, Firestore).",
+      "Canlı Destek Entegrasyonu": "Müşterileri canlı temsilcilere yönlendirmek için (örn: Zendesk, Intercom API'leri).",
+      "Backend Servisleri": "Sohbet mantığı, API etkileşimleri, veri akışı yönetimi için (örn: Python/Flask, Node.js/Express).",
+      "Mesajlaşma Platformu Entegrasyonu (Opsiyonel)": "WhatsApp, Messenger gibi platformlarda çalışabilmek için (ilgili platformların API'leri).",
+      "Bulut Altyapısı": "Yüksek kullanılabilirlik ve ölçeklenebilirlik için (örn: Google Cloud Run, AWS Lambda)."
     }
   },
   {
-    "senaryo_adi": "Yapay Zeka Destekli Sözleşme Analiz ve Risk Belirleme Aracı",
-    "senaryo_metni": "Hukuk departmanları ve iş birimleri için, PDF formatındaki sözleşmeleri hızlıca analiz eden, ana maddeleri (fesih şartları, gizlilik maddeleri, ödeme koşulları) çıkaran ve potansiyel riskleri (eksik maddeler, belirsiz ifadeler, lehe/aleyhe durumlar) belirleyerek özet bir rapor sunan bir Yapay Zeka aracı geliştirmek istiyorum. Bu araç, sözleşmelerin hızlı incelenmesini sağlayarak insan hatasını azaltacak ve zaman tasarrufu sağlayacaktır.",
-    "gereksinimler": [
-      {
-        "metin": "Kullanıcılar PDF formatında sözleşme dosyalarını sisteme yükleyebilmelidir.",
-        "tip": "FR"
-      },
-      {
-        "metin": "Sistem, yüklenen sözleşme metnini analiz ederek ana maddeleri (örn: fesih şartları, gizlilik maddeleri, ödeme koşulları) otomatik olarak çıkarabilmelidir.",
-        "tip": "FR"
-      },
-      {
-        "metin": "Sistem, sözleşmelerdeki potansiyel riskleri (örn: eksik maddeler, belirsiz ifadeler, yoruma açık kısımlar) belirleyebilmelidir.",
-        "tip": "FR"
-      },
-      {
-        "metin": "Sistem, analiz sonuçlarını özet bir rapor halinde sunabilmelidir.",
-        "tip": "FR"
-      },
-      {
-        "metin": "Sözleşme analiz süresi büyük boyutlu (örn: 100 sayfa) bir PDF için 30 saniyeyi geçmemelidir.",
-        "tip": "NFR"
-      },
-      {
-        "metin": "Sistem, analiz edilen sözleşmelerdeki hassas verileri (örn: ticari sırlar, kişisel veriler) şifreli ve güvenli bir şekilde saklamalıdır.",
-        "tip": "NFR"
-      },
-      {
-        "metin": "Sözleşme analizinin doğruluk oranı %90 ve üzeri olmalıdır.",
-        "tip": "NFR"
-      }
-    ],
-    "oneriler": [
-      {
-        "tip": "FR - Farklı Sözleşme Türleri İçin Şablonlar",
-        "detay": "Sistem, farklı sözleşme türleri (örn: kira sözleşmesi, hizmet sözleşmesi, gizlilik anlaşması) için özelleştirilmiş analiz şablonları sunabilmeli ve kullanıcının seçim yapmasına olanak tanımalıdır."
-      },
-      {
-        "tip": "FR - Maddelerin Karşılaştırılması",
-        "detay": "Kullanıcılar, yüklenen sözleşmelerdeki belirli maddeleri (örn: sorumluluk sınırlamaları) şirket standart şablonlarıyla veya başka sözleşmelerle karşılaştırabilmelidir."
-      },
-      {
-        "tip": "FR - Vurgulama ve Açıklama",
-        "detay": "Oluşturulan raporda riskli bulunan veya dikkat çekilmesi gereken maddeler, sözleşme metni üzerinde görsel olarak vurgulanmalı ve kısa açıklamalarla desteklenmelidir."
-      },
-      {
-        "tip": "NFR - Denetim İzleri (Audit Trail)",
-        "detay": "Sisteme yüklenen ve analiz edilen her sözleşme için kimin ne zaman hangi işlemi yaptığını gösteren detaylı denetim izleri tutulmalıdır."
-      },
-      {
-        "tip": "NFR - Hukuki Uyumluluk",
-        "detay": "Sistem, belirli ülke veya sektörlere ait hukuki düzenlemelerle (örn: GDPR, KVKK) ilgili riskleri tespit etme yeteneğine sahip olmalıdır."
-      },
-      {
-        "tip": "FR - Rapor Dışa Aktarma",
-        "detay": "Analiz raporları, PDF veya DOCX gibi yaygın formatlarda kolayca dışa aktarılabilmelidir."
-      },
-      {
-        "tip": "FR - İlgili Hukuki Kaynaklara Yönlendirme",
-        "detay": "Belirlenen riskler veya belirsiz maddeler için sistem, ilgili yasal maddelere, emsal kararlara veya iç şirket politikalarına yönlendiren referanslar sunabilmelidir."
-      }
-    ],
+    "proje_adi": "Yapay Zeka Destekli Sözleşme Analiz ve Risk Belirleme Aracı",
+    "giris": {
+      "amac": "Bu belge, Yapay Zeka Destekli Sözleşme Analiz ve Risk Belirleme Aracı sistemine ait gereksinimleri tanımlar. Sistem, Hukuk departmanları ve iş birimleri için, PDF formatındaki sözleşmeleri hızlıca analiz eden, ana maddeleri (fesih şartları, gizlilik maddeleri, ödeme koşulları) çıkaran ve potansiyel riskleri (eksik maddeler, belirsiz ifadeler, lehe/aleyhe durumlar) belirleyerek özet bir rapor sunan bir Yapay Zeka aracı geliştirmek istiyorum. Bu araç, sözleşmelerin hızlı incelenmesini sağlayarak insan hatasını azaltacak ve zaman tasarrufu sağlayacaktır.",
+      "kapsam": "Proje kapsamında hedeflenen temel işlevler, sistemin destekleyeceği kullanıcı rollerine ve süreçlerine göre şekillendirilmiştir."
+    },
     "kullanici_rolleri": [
       {
         "rol": "Hukuk Departmanı Çalışanı",
-        "detay": "Sözleşmeleri sisteme yükleyen, analiz sonuçlarını ve risk raporlarını inceleyen, hukuki yorumlar yapan kişi."
+        "gorevler": [
+          "Sözleşmeleri sisteme yükleyen, analiz sonuçlarını ve risk raporlarını inceleyen, hukuki yorumlar yapan kişi."
+        ]
       },
       {
         "rol": "İş Birimi Yöneticisi",
-        "detay": "Sözleşmeleri sisteme yükleyen, iş birimi açısından riskleri ve ana maddeleri hızlıca gözden geçiren kişi."
+        "gorevler": [
+          "Sözleşmeleri sisteme yükleyen, iş birimi açısından riskleri ve ana maddeleri hızlıca gözden geçiren kişi."
+        ]
       },
       {
         "rol": "Sistem Yöneticisi",
-        "detay": "Sistemin genel ayarlarını, kullanıcı yetkilendirmelerini ve performansını yöneten kişi."
+        "gorevler": [
+          "Sistemin genel ayarlarını, kullanıcı yetkilendirmelerini ve performansını yöneten kişi."
+        ]
       }
     ],
-    "teknik_gereksinimler": [
+    "fonksiyonel_gereksinimler": {
+      "FR-01": "Kullanıcılar PDF formatında sözleşme dosyalarını sisteme yükleyebilmelidir.",
+      "FR-02": "Sistem, yüklenen sözleşme metnini analiz ederek ana maddeleri (örn: fesih şartları, gizlilik maddeleri, ödeme koşulları) otomatik olarak çıkarabilmelidir.",
+      "FR-03": "Sistem, sözleşmelerdeki potansiyel riskleri (örn: eksik maddeler, belirsiz ifadeler, yoruma açık kısımlar) belirleyebilmelidir.",
+      "FR-04": "Sistem, analiz sonuçlarını özet bir rapor halinde sunabilmelidir.",
+      "FR-05": "Sistem, farklı sözleşme türleri (örn: kira sözleşmesi, hizmet sözleşmesi, gizlilik anlaşması) için özelleştirilmiş analiz şablonları sunabilmeli ve kullanıcının seçim yapmasına olanak tanımalıdır.",
+      "FR-06": "Kullanıcılar, yüklenen sözleşmelerdeki belirli maddeleri (örn: sorumluluk sınırlamaları) şirket standart şablonlarıyla veya başka sözleşmelerle karşılaştırabilmelidir.",
+      "FR-07": "Oluşturulan raporda riskli bulunan veya dikkat çekilmesi gereken maddeler, sözleşme metni üzerinde görsel olarak vurgulanmalı ve kısa açıklamalarla desteklenmelidir.",
+      "FR-08": "Analiz raporları, PDF veya DOCX gibi yaygın formatlarda kolayca dışa aktarılabilmelidir.",
+      "FR-09": "Belirlenen riskler veya belirsiz maddeler için sistem, ilgili yasal maddelere, emsal kararlara veya iç şirket politikalarına yönlendiren referanslar sunabilmelidir."
+    },
+    "fonksiyonel_olmayan_gereksinimler": {
+      "NFR-01": "Sözleşme analiz süresi büyük boyutlu (örn: 100 sayfa) bir PDF için 30 saniyeyi geçmemelidir.",
+      "NFR-02": "Sistem, analiz edilen sözleşmelerdeki hassas verileri (örn: ticari sırlar, kişisel veriler) şifreli ve güvenli bir şekilde saklamalıdır.",
+      "NFR-03": "Sözleşme analizinin doğruluk oranı %90 ve üzeri olmalıdır.",
+      "NFR-04": "Sisteme yüklenen ve analiz edilen her sözleşme için kimin ne zaman hangi işlemi yaptığını gösteren detaylı denetim izleri tutulmalıdır.",
+      "NFR-05": "Sistem, belirli ülke veya sektörlere ait hukuki düzenlemelerle (örn: GDPR, KVKK) ilgili riskleri tespit etme yeteneğine sahip olmalıdır."
+    },
+    "kullanim_senaryolari": [
       {
-        "teknoloji": "OCR (Optik Karakter Tanıma)",
-        "detay": "PDF formatındaki sözleşmelerden metin çıkarmak için (örn: Google Cloud Vision AI, Tesseract)."
+        "id": "UC-01",
+        "adimlar": [
+          "Kullanıcının PDF sözleşme dosyalarını yüklediği arayüz."
+        ]
       },
       {
-        "teknoloji": "NLP/LLM Modeli",
-        "detay": "Hukuki metinleri anlama, ana maddeleri çıkarma, riskleri belirleme ve özetleme için (örn: Gemini, GPT, veya özel hukuki modeller)."
+        "id": "UC-02",
+        "adimlar": [
+          "Sözleşmenin ana maddelerinin, risklerin ve özetin görüntülendiği, belki de interaktif grafikler içeren panel."
+        ]
       },
       {
-        "teknoloji": "Bilgi Çıkarım (Information Extraction) Modeli",
-        "detay": "Sözleşmelerden belirli veri noktalarını (tarihler, taraflar, tutarlar) yapılandırılmış olarak çıkarmak için."
+        "id": "UC-03",
+        "adimlar": [
+          "Belirlenen risklerin sözleşme metni üzerinde vurgulanarak detaylı açıklamalarının sunulduğu ekran."
+        ]
       },
       {
-        "teknoloji": "Veritabanı",
-        "detay": "Yüklenen sözleşme metinleri (güvenli bir şekilde), analiz sonuçları, kullanıcı bilgileri ve denetim izleri için."
+        "id": "UC-04",
+        "adimlar": [
+          "Yüklenmiş ve analiz edilmiş tüm sözleşmelerin listelendiği, arama ve filtreleme yapılabilen sayfa."
+        ]
       },
       {
-        "teknoloji": "Backend Servisleri",
-        "detay": "Dosya yükleme, analiz işleme, rapor oluşturma ve kullanıcı arayüzüne sunma için."
-      },
-      {
-        "teknoloji": "Bulut Depolama",
-        "detay": "Sözleşme dosyalarının güvenli ve yedekli bir şekilde saklanması için."
+        "id": "UC-05",
+        "adimlar": [
+          "Oluşturulan raporu farklı formatlarda indirme butonu."
+        ]
       }
     ],
-    "arayuz_ekran_bilesenleri": [
-      {
-        "bilesen": "Sözleşme Yükleme Ekranı",
-        "detay": "Kullanıcının PDF sözleşme dosyalarını yüklediği arayüz."
-      },
-      {
-        "bilesen": "Analiz Sonuçları/Rapor Paneli",
-        "detay": "Sözleşmenin ana maddelerinin, risklerin ve özetin görüntülendiği, belki de interaktif grafikler içeren panel."
-      },
-      {
-        "bilesen": "Risk Detayları/Vurgulama Ekranı",
-        "detay": "Belirlenen risklerin sözleşme metni üzerinde vurgulanarak detaylı açıklamalarının sunulduğu ekran."
-      },
-      {
-        "bilesen": "Sözleşme Kütüphanesi/Geçmişi",
-        "detay": "Yüklenmiş ve analiz edilmiş tüm sözleşmelerin listelendiği, arama ve filtreleme yapılabilen sayfa."
-      },
-      {
-        "bilesen": "Rapor Dışa Aktarma Butonu",
-        "detay": "Oluşturulan raporu farklı formatlarda indirme butonu."
-      }
-    ],
-    "olasi_risk_ve_sorumluluklar": [
-      {
-        "risk": "Hatalı Hukuki Yorumlama/Analiz",
-        "sorumluluk": "Sistemin sözleşmeleri yanlış yorumlaması, kritik riskleri gözden kaçırması veya olmayan riskleri belirtmesi. Şirket için büyük hukuki ve finansal kayıplar, yanlış kararlar, itibar zedelenmesi."
-      },
-      {
-        "risk": "Veri Güvenliği ve Gizlilik İhlali",
-        "sorumluluk": "Hassas ve gizli ticari/hukuki bilgiler içeren sözleşmelerin sızması veya yetkisiz erişime uğraması. KVKK/GDPR uyumsuzluğu, büyük para cezaları, ticari sırların ifşası, hukuki yaptırımlar."
-      },
-      {
-        "risk": "Sistem Performansı/Hızı",
-        "sorumluluk": "Büyük veya karmaşık sözleşmelerin analiz süresinin uzaması, operasyonel verimliliğin düşmesi. Zaman kaybı, kullanıcı memnuniyetsizliği."
-      },
-      {
-        "risk": "Yasal Uyumsuzluklar (Sektörel)",
-        "sorumluluk": "Belirli sektörlere (finans, sağlık) özel hukuki düzenlemelere uyum sağlayamama. Özel denetimler, lisans iptali, yasal yaptırımlar."
-      },
-      {
-        "risk": "OCR Hataları",
-        "sorumluluk": "Taranmış PDF'lerden metin çıkarırken oluşan hatalar, metnin yanlış okunması. Analiz sonuçlarının güvenirliğinin azalması."
-      },
-      {
-        "risk": "İnsan Denetiminin Göz Ardı Edilmesi",
-        "sorumluluk": "Kullanıcıların araca aşırı güvenerek insan denetimini azaltması ve kritik hataların fark edilmemesi. Şirket için büyük riskler."
-      }
-    ],
-    "mvp_onerisi": {
-      "aciklama": "MVP, temel sözleşme metinlerinden ana maddelerin (örn: taraflar, tarih, konu) çıkarılmasına ve basit risk işaretlemesine odaklanmalıdır.",
-      "ozellikler": [
-        "PDF sözleşme yükleme (OCR ile metin çıkarma)",
-        "Sözleşmedeki ana tarafları, tarihi, konusu gibi temel bilgileri çıkarma",
-        "Basit risk işaretlemesi (örn: belirli anahtar kelimelerin veya kalıpların varlığı)",
-        "Analiz sonuçlarını temel metin formatında görüntüleme"
+    "is_kurallari": {
+      "BR-01": "Sistemin sözleşmeleri yanlış yorumlaması, kritik riskleri gözden kaçırması veya olmayan riskleri belirtmesi. Şirket için büyük hukuki ve finansal kayıplar, yanlış kararlar, itibar zedelenmesi.",
+      "BR-02": "Hassas ve gizli ticari/hukuki bilgiler içeren sözleşmelerin sızması veya yetkisiz erişime uğraması. KVKK/GDPR uyumsuzluğu, büyük para cezaları, ticari sırların ifşası, hukuki yaptırımlar.",
+      "BR-03": "Büyük veya karmaşık sözleşmelerin analiz süresinin uzaması, operasyonel verimliliğin düşmesi. Zaman kaybı, kullanıcı memnuniyetsizliği.",
+      "BR-04": "Belirli sektörlere (finans, sağlık) özel hukuki düzenlemelere uyum sağlayamama. Özel denetimler, lisans iptali, yasal yaptırımlar.",
+      "BR-05": "Taranmış PDF'lerden metin çıkarırken oluşan hatalar, metnin yanlış okunması. Analiz sonuçlarının güvenirliğinin azalması.",
+      "BR-06": "Kullanıcıların araca aşırı güvenerek insan denetimini azaltması ve kritik hataların fark edilmemesi. Şirket için büyük riskler."
+    },
+    "veri_gereksinimleri": {
+      "tahmini_veri_kumesi": [
+        "kullanıcı bilgileri",
+        "sistem logları",
+        "uygulama içeriği",
+        "etkileşim geçmişi"
       ]
+    },
+    "sistem_gereksinimleri": {
+      "OCR (Optik Karakter Tanıma)": "PDF formatındaki sözleşmelerden metin çıkarmak için (örn: Google Cloud Vision AI, Tesseract).",
+      "NLP/LLM Modeli": "Hukuki metinleri anlama, ana maddeleri çıkarma, riskleri belirleme ve özetleme için (örn: Gemini, GPT, veya özel hukuki modeller).",
+      "Bilgi Çıkarım (Information Extraction) Modeli": "Sözleşmelerden belirli veri noktalarını (tarihler, taraflar, tutarlar) yapılandırılmış olarak çıkarmak için.",
+      "Veritabanı": "Yüklenen sözleşme metinleri (güvenli bir şekilde), analiz sonuçları, kullanıcı bilgileri ve denetim izleri için.",
+      "Backend Servisleri": "Dosya yükleme, analiz işleme, rapor oluşturma ve kullanıcı arayüzüne sunma için.",
+      "Bulut Depolama": "Sözleşme dosyalarının güvenli ve yedekli bir şekilde saklanması için."
     }
   }
 ]

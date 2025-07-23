@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Gereksinim Analiz Asistanı</title>
+    <title>ReqAI</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
@@ -11,7 +11,7 @@
 <body>
     <div class="container">
         <header>
-            <h1><span class="icon">💡</span> AI Destekli Gereksinim Analiz Asistanı</h1>
+            <h1><span class="icon">💡</span>ReqAI (AI Destekli Gereksinim Analiz Asistanı)</h1>
         </header>
 
         <main>
@@ -20,7 +20,6 @@
             <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
 
-                {# Genel form hatalarını göster #}
                 {% if form.non_field_errors %}
                     <ul class="errorlist">
                         {% for error in form.non_field_errors %}
@@ -32,13 +31,6 @@
                 <div class="form-group input-section">
                     <label for="{{ form.senaryo_metni.id_for_label }}">Senaryo Metni:</label>
                     {{ form.senaryo_metni }}
-                    {% if form.senaryo_metni.errors %}
-                        <ul class="errorlist">
-                            {% for error in form.senaryo_metni.errors %}
-                                <li>{{ error }}</li>
-                            {% endfor %}
-                        </ul>
-                    {% endif %}
                 </div>
 
                 <div class="or-separator">
@@ -52,19 +44,11 @@
                         <label for="{{ form.pdf_dosyasi.id_for_label }}" class="upload-button">Dosya Seç</label>
                         <span id="file-name" class="selected-file-name">Dosya seçilmedi</span>
                     </div>
-                    {% if form.pdf_dosyasi.errors %}
-                        <ul class="errorlist">
-                            {% for error in form.pdf_dosyasi.errors %}
-                                <li>{{ error }}</li>
-                            {% endfor %}
-                        </ul>
-                    {% endif %}
                 </div>
 
                 <button type="submit" class="analyze-button">Senaryoyu Analiz Et</button>
             </form>
 
-            {# AI'ya gönderilen metnin önizlemesi #}
             {% if original_senaryo_metni_preview %}
                 <div class="original-text-preview">
                     <h3>Giriş Metni Önizlemesi (İlk 500 Karakter):</h3>
@@ -72,15 +56,13 @@
                 </div>
             {% endif %}
 
-            {# Hata mesajları #}
             {% if hata_mesaji %}
                 <div class="error">Hata: {{ hata_mesaji }}</div>
             {% endif %}
 
-            {# Analiz sonucu #}
             {% if analiz_sonucu %}
                 <div class="result">
-                    <h2><span class="icon">🤖</span> Gemini'den Gelen Senaryo Analizi</h2>
+                    <h2><span class="icon">🤖</span> ReqAI'den Gelen Senaryo Analizi</h2>
                     {{ analiz_sonucu|safe }}
                 </div>
             {% endif %}
@@ -93,12 +75,8 @@
             const fileNameSpan = document.getElementById('file-name');
 
             if (fileInput) {
-                fileInput.addEventListener('change', function() {
-                    if (this.files && this.files.length > 0) {
-                        fileNameSpan.textContent = this.files[0].name;
-                    } else {
-                        fileNameSpan.textContent = 'Dosya seçilmedi';
-                    }
+                fileInput.addEventListener('change', function () {
+                    fileNameSpan.textContent = this.files.length > 0 ? this.files[0].name : 'Dosya seçilmedi';
                 });
             }
         });

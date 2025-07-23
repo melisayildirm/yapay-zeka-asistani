@@ -16,7 +16,8 @@ class SenaryoForm(forms.Form):
         required=False, # Ya metin ya da PDF olmalı
         label="PDF Dosyası Yükle",
         widget=forms.FileInput(attrs={
-            'hidden': True # Orijinal input'u gizlemek için eklendi
+            'hidden': True, # Orijinal input'u gizlemek için eklendi
+            'accept': '.pdf' # Sadece PDF dosyalarını kabul etmesi için bu satırı da ekleyin
         })
     )
 

@@ -7,4 +7,4 @@ app_name = 'analiz_uygulamasi' # Bu uygulamanın URL'leri için benzersiz isim a
 
 urlpatterns = [
     path('analiz/', views.analiz_senaryo, name='analiz_senaryo'),
-   ]
+]
