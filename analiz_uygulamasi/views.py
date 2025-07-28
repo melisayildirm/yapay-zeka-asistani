@@ -23,7 +23,7 @@ else:
     try:
         # API anahtarıyla Gemini modelini yapılandır ve başlat
         genai.configure(api_key=API_KEY)
-        gemini_model = genai.GenerativeModel('gemini-1.5-flash') 
+        gemini_model = genai.GenerativeModel('gemini-pro') 
     except Exception as e:
         # Model başlatılırken bir hata oluşursa terminale yazdır
         print(f"HATA: Gemini modeli oluşturulurken bir hata oluştu: {e}")
